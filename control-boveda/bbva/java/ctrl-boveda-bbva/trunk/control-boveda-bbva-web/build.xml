@@ -1,0 +1,286 @@
+<project name="control-boveda-bbva-web" default="ear-gen" basedir=".">
+	<path id="project.class.path">
+	</path>
+
+	<tstamp>
+		<format property="fechahoy" pattern="dd/MM/yyyy hh:mm" />
+	</tstamp>
+
+	<!-- Crear carpetas -->
+	<target name="create">
+		<mkdir dir="${build.dir}/ctrl-boveda-controller" />
+		<mkdir dir="${build.dir}/lib" />
+		<mkdir dir="${build.dir}/templib" />
+	</target>
+
+	<property file="ant-proy-config.properties" />
+	<property name="impl.autor" value="ddaia" />
+
+	<!-- WAR GEN iainfcolaboracionee-->
+	<target name="ctrlboveda-gen">
+		<jar jarfile="${build.dir}/ctrlboveda.war" basedir="${webapp.dir}/ctrlboveda">
+			<include name="**/*.jsp" />
+			<include name="**/*.css" />
+			<include name="**/*.tld" />
+			<include name="WEB-INF/*.xml" />
+			<manifest>
+				<attribute name="Built-By" value="${user.name}" />
+				<section name="common">
+					<attribute name="Specification-Title" value="ctrlboveda war" />
+					<attribute name="Specification-Version" value="${spec.version}" />
+					<attribute name="Specification-Vendor" value="BBVA" />
+					<attribute name="Implementation-Title" value="ctrlboveda" />
+					<attribute name="Implementation-Version" value="${impl.version}" />
+					<attribute name="Implementation-Vendor" value="BBVA" />
+				</section>
+				<attribute name="class-path" value="./lib/ctrl-boveda-controller.jar" />
+			</manifest>
+		</jar>
+	</target>
+
+	<!-- Genera el JAR con los servicios del modulo -->
+	<target name="ctrl-boveda-controller-gen">
+		<tstamp>
+			<format property="TODAY" pattern="dd-MM-yyyy" />
+		</tstamp>
+
+		<copy todir="${temp.lib}">
+			<fileset dir="${resource.dir}/main/resources">
+				<include name="ctrl-boveda-beanRefContext.xml" />
+				<include name="ctrl-boveda-service.xml" />
+			</fileset>
+		</copy>
+
+		<jar jarfile="${temp.lib}/ctrl-boveda-controller.jar" basedir="${temp.lib}">
+			<fileset dir="${classes.dir}">
+				<include name="**/com/bbva/control/boveda/controller/*.class" />
+			</fileset>
+
+			<fileset dir="${build.dir}/ctrl-boveda-controller">
+				<include name="ctrl-boveda-beanRefContext.xml" />
+				<include name="ctrl-boveda-service.xml" />
+			</fileset>
+
+			<manifest>
+				<attribute name="Built-By" value="${user.name}" />
+				<section name="common">
+					<attribute name="Specification-Title" value="ctrlboveda jar" />
+					<attribute name="Specification-Version" value="${spec.version}" />
+					<attribute name="Specification-Vendor" value="BBVA" />
+					<attribute name="Implementation-Title" value="ctrlboveda jar" />
+					<attribute name="Implementation-Version" value="${impl.version}" />
+					<attribute name="Implementation-Vendor" value="BBVA" />
+				</section>
+				<!-- indique las librerias que necesita la aplicacion para funcionar -->
+			</manifest>
+		</jar>
+	</target>
+
+
+	<target name="control-model-ifz-gen">
+		<tstamp>
+			<format property="TODAY" pattern="dd-MM-yyyy" />
+		</tstamp>
+		<jar jarfile="${project.lib}/control-model-ifz.jar" basedir="${build.dir}/templib">
+			<fileset dir="${classes.dir}">
+				<include name="com/bbva/control/boveda/model/*.class" />
+				<include name="com/bbva/control/boveda/model/dao/*DAO.class" />
+				<include name="com/bbva/control/boveda/bean/*.class" />
+			</fileset>
+			<manifest>
+				<section name="common">
+					<attribute name="Specification-Title" value="control-model-ifz" />
+					<attribute name="Specification-Version" value="${spec.version}" />
+					<attribute name="Specification-Vendor" value="BBVA CONTINENTAL" />
+					<attribute name="Implementation-Title" value="control-model-ifz" />
+					<attribute name="Implementation-Version" value="${impl.version}" />
+					<attribute name="Implementation-Vendor" value="BBVA CONTINENTAL" />
+				</section>
+			</manifest>
+		</jar>
+	</target>
+
+	<target name="control-model-imp-gen">
+		<tstamp>
+			<format property="TODAY" pattern="dd-MM-yyyy" />
+		</tstamp>
+		<jar jarfile="${project.lib}/control-model-imp.jar" basedir="${build.dir}/templib">
+			<fileset dir="${classes.dir}">
+				<include name="com/bbva/control/boveda/model/dao/ibatis/SqlMap*.class" />
+				<include name="com/bbva/control/boveda/model/dao/ibatis/maps/*.xml" />
+				<include name="ctrl-bbva-shalib-sqlmap-config.xml" />
+				<include name="ctrl-boveda-shalib-data.xml" />
+
+			</fileset>
+			<manifest>
+				<attribute name="Built-By" value="${user.name}" />
+				<section name="common">
+					<attribute name="Specification-Title" value="control-model-imp" />
+					<attribute name="Specification-Version" value="${spec.version}" />
+					<attribute name="Specification-Vendor" value="BBVA CONTINENTAL" />
+					<attribute name="Implementation-Title" value="control-model-imp" />
+					<attribute name="Implementation-Version" value="${impl.version}" />
+					<attribute name="Implementation-Vendor" value="BBVA CONTINENTAL" />
+				</section>
+			</manifest>
+		</jar>
+	</target>
+
+	<!-- Generador de la libreria -->
+	<target name="control-service-ifz-gen">
+
+		<tstamp>
+			<format property="TODAY" pattern="dd-MM-yyyy" />
+		</tstamp>
+		<jar jarfile="${project.lib}/control-service-ifz.jar" basedir="${build.dir}/templib">
+			<fileset dir="${classes.dir}">
+				<!-- indique las clases que necesita para generar el jar -->
+				<include name="com/bbva/control/boveda/service/*Service.class" />
+				<include name="com/bbva/control/boveda/util/*.class" />
+			</fileset>
+			<manifest>
+				<attribute name="Built-By" value="${user.name}" />
+				<section name="common">
+					<attribute name="Specification-Title" value="control-service-ifz" />
+					<attribute name="Specification-Version" value="${spec.version}" />
+					<attribute name="Specification-Vendor" value="BBVA CONTINENTAL" />
+					<attribute name="Implementation-Title" value="control-service-ifz" />
+					<attribute name="Implementation-Version" value="${impl.version}" />
+					<attribute name="Implementation-Vendor" value="BBVA CONTINENTAL" />
+				</section>
+			</manifest>
+		</jar>
+	</target>
+
+	<target name="control-service-imp-gen">
+		<tstamp>
+			<format property="TODAY" pattern="dd-MM-yyyy" />
+		</tstamp>
+		<jar jarfile="${project.lib}/control-service-imp.jar" basedir="${build.dir}/templib">
+			<fileset dir="${classes.dir}">
+				<include name="com/bbva/control/boveda/service/*ServiceImpl.class" />
+
+			</fileset>
+			<fileset dir="${classes.dir}">
+				<!-- Archivos de configuración de Spring -->
+				<include name="ctrl-boveda-shalib-service.xml" />
+				<include name="ctrl-boveda-shalib-service-map.xml" />
+				<include name="ctrl-boveda-shalib-tx.xml" />
+			</fileset>
+			<manifest>
+				<attribute name="Built-By" value="${user.name}" />
+				<section name="common">
+					<attribute name="Specification-Title" value="control-service-imp" />
+					<attribute name="Specification-Version" value="${spec.version}" />
+					<attribute name="Specification-Vendor" value="BBVA CONTINENTAL" />
+					<attribute name="Implementation-Title" value="control-service-imp" />
+					<attribute name="Implementation-Version" value="${impl.version}" />
+					<attribute name="Implementation-Vendor" value="BBVA CONTINENTAL" />
+				</section>
+				<!-- indique las librerias que necesita la aplicacion para funcionar -->
+			</manifest>
+		</jar>
+	</target>
+
+	<!-- PATH GEN -->
+	<path id="build.classpath">
+		<fileset dir="${build.dir}">
+			<include name="lib/*.jar" />
+		</fileset>
+	</path>
+
+	<pathconvert property="manifest.classpath" pathsep=" ">
+		<path refid="build.classpath" />
+		<mapper>
+			<chainedmapper>
+				<flattenmapper />
+				<globmapper from="*.jar" to="lib/*.jar" />
+			</chainedmapper>
+		</mapper>
+	</pathconvert>
+
+	<!-- Generador del ear -->
+	<target name="ear-gen" depends="create, ctrl-boveda-controller-gen, ctrlboveda-gen, control-model-ifz-gen, control-model-imp-gen, control-service-ifz-gen, control-service-imp-gen">
+		<copy todir="${project.lib}">
+			<fileset dir="${temp.lib}">
+				<include name="ctrl-boveda-controller.jar" />
+			</fileset>
+		</copy>
+
+		<jar jarfile="${build.dir}/control-boveda-bbva-web.ear" basedir="${build.dir}">
+			<include name="ctrlboveda.war" />
+			<include name="META-INF/*.xml" />
+			<include name="lib/control-model-ifz.jar" />
+			<include name="lib/control-model-imp.jar" />
+			<include name="lib/control-service-ifz.jar" />
+			<include name="lib/control-service-imp.jar" />
+			<include name="lib/ctrl-boveda-controller.jar" />
+			<include name="lib/spring-beans-3.2.3.RELEASE.jar" />
+			<include name="lib/spring-context-3.2.3.RELEASE.jar" />
+			<include name="lib/spring-core-3.2.3.RELEASE.jar" />
+			<include name="lib/spring-expression-3.2.3.RELEASE.jar" />
+			<include name="lib/spring-web-3.2.3.RELEASE.jar" />
+			<include name="lib/spring-webmvc-3.2.3.RELEASE.jar" />
+			<include name="lib/jackson-annotations-2.2.3.jar" />
+			<include name="lib/jackson-core-2.2.3.jar" />
+			<include name="lib/jackson-databind-2.2.3.jar" />
+			<include name="lib/jstl-1.2.jar" />
+			<include name="lib/log4j.jar" />
+			<include name="lib/servlet-api-2.4.jar" />
+			<include name="lib/commons-collections.jar" />
+			<include name="lib/commons-lang.jar" />
+			<include name="lib/commons-logging.jar" />
+			<include name="lib/framework-util-2.0-jdk16.jar" />
+			<include name="lib/sojo-1.0.0.jar" />
+			<include name="lib/json_simple.jar" />
+
+
+
+			<include name="lib/aopalliance-1.0.jar" />
+			<include name="lib/aspectjrt.jar" />
+			<include name="lib/commons-io.jar" />
+			<include name="lib/ibatis-sqlmap-2.3.0.jar" />
+			<include name="lib/spring-aop-3.2.3.RELEASE.jar" />
+			<include name="lib/spring-context-support-3.2.3.RELEASE.jar" />
+			<include name="lib/spring-jdbc-3.2.3.RELEASE.jar" />
+			<include name="lib/spring-orm-3.2.3.RELEASE.jar" />
+			<include name="lib/spring-tx-3.2.3.RELEASE.jar" />
+			<include name="lib/poi-3.7-20101029.jar" />
+			<include name="lib/xmlbeans-2.5.0.jar" />
+			<include name="lib/dom4j.jar" />
+			<include name="lib/poi-ooxml-schemas-3.7-beta1.jar" />
+			<include name="lib/xmlbeans-xmlpublic-2.4.0.jar" />
+			<include name="lib/poi-3.9.jar" />
+			<include name="lib/poi-ooxml-3.5-beta5.jar" />
+			<include name="lib/poi-ooxml-3.9.jar" />
+			<include name="lib/quartz-all-1.7.3.jar" />
+			<!--por reemplazo de tecnologia2-terceros-sharedlib-1.0.0 -->
+
+			<manifest>
+				<attribute name="Built-By" value="${user.name}" />
+				<attribute name="Build-Jdk" value="${java.version}" />
+				<!--<attribute name="Weblogic-Application-Version" value="${impl.version}" /> -->
+				<attribute name="Specification-Title" value="ctrl-boveda-bbva" />
+				<attribute name="Specification-Vendor" value="BBVA" />
+				<attribute name="Implementation-Title" value="ctrl-boveda-bbva" />
+				<attribute name="Implementation-Vendor" value="BBVA" />
+				<!--attribute name="Specification-Version" value="${spec.version}"/>
+				<attribute name="Implementation-Version" value="${impl.version}"/-->
+				<attribute name="Extension-Name" value="ctrl-boveda-bbva" />
+			</manifest>
+		</jar>
+			<delete file="${build.dir}/lib/ctrl-boveda-controller.jar"></delete>
+			<delete file="${temp.lib}/ctrl-boveda-controller.jar"></delete>
+			<delete file="${build.dir}/lib/control-model-ifz.jar"></delete>
+			<delete file="${build.dir}/lib/control-model-imp.jar"></delete>
+			<delete file="${build.dir}/lib/control-service-ifz.jar"></delete>
+			<delete file="${build.dir}/lib/control-service-imp.jar"></delete>
+		
+		<copy file="${build.dir}/control-boveda-bbva-web.ear" todir="${wls103.deploy.dir}" />
+		<!--copy file="${build.dir}/control-boveda-bbva.ear" todir="${autodeploy.dir}" /-->
+		<delete dir="${build.dir}/ctrl-boveda-controller" />
+		<delete dir="${build.dir}/templib" />
+		<delete file="${build.dir}/ctrlboveda.war"></delete>
+	</target>
+
+</project>

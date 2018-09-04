@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="temp">
+
+	<typeAlias alias="controlDocBean" type="com.bbva.control.boveda.bean.ControlDocBean" />
+	
+	<insert id="insertarTempCheqcar" parameterClass="controlDocBean">
+		INSERT INTO TMP_CHEQCAR1 (
+		<isNotEmpty property="cod_juliano">cod_juliano</isNotEmpty>
+		<isNotEmpty property="cod_operador" prepend=",">cod_operador</isNotEmpty>
+		<isNotEmpty property="num_cuenta" prepend=",">num_cuenta</isNotEmpty>
+		<isNotEmpty property="cod_servicio" prepend=",">cod_servicio</isNotEmpty>
+		<isNotEmpty property="fec_vencimiento" prepend=",">fec_vencimiento</isNotEmpty>
+		<isNotEmpty property="imp_importe" prepend=",">imp_importe</isNotEmpty>
+		<isNotEmpty property="cod_clase_documento" prepend=",">cod_clase_documento</isNotEmpty>
+		<isNotEmpty property="cod_agencia" prepend=",">cod_agencia</isNotEmpty>
+		<isNotEmpty property="cod_plaza" prepend=",">cod_plaza</isNotEmpty>
+		<isNotEmpty property="num_cliente" prepend=",">num_cliente</isNotEmpty>
+		
+		<isNotEmpty property="fec_giro" prepend=",">fec_giro</isNotEmpty>
+		<isNotEmpty property="fec_desembolso" prepend=",">fec_desembolso</isNotEmpty>
+		<isNotEmpty property="fec_proceso" prepend=",">fec_proceso</isNotEmpty>
+		<isNotEmpty property="des_nombre" prepend=",">des_nombre</isNotEmpty>
+		<isNotEmpty property="des_direccion" prepend=",">des_direccion</isNotEmpty>
+		<isNotEmpty property="num_cuenta_aceptante" prepend=",">num_cuenta_aceptante</isNotEmpty>
+		<isNotEmpty property="num_tasa_opcional" prepend=",">num_tasa_opcional</isNotEmpty>
+		<isNotEmpty property="num_porcentaje_renova" prepend=",">num_porcentaje_renova</isNotEmpty>
+		<isNotEmpty property="ind_instruccion_cobro" prepend=",">ind_instruccion_cobro</isNotEmpty>
+		<isNotEmpty property="ind_exoneracion_impuest" prepend=",">ind_exoneracion_impuest</isNotEmpty>
+		
+		<isNotEmpty property="num_tasa_garantia" prepend=",">num_tasa_garantia</isNotEmpty>
+		<isNotEmpty property="cod_planilla" prepend=",">cod_planilla</isNotEmpty>
+		<isNotEmpty property="num_cuenta_factoring" prepend=",">num_cuenta_factoring</isNotEmpty>
+		<isNotEmpty property="cod_tipo_doc_identidad" prepend=",">cod_tipo_doc_identidad</isNotEmpty>
+		<isNotEmpty property="num_doc_identidad" prepend=",">num_doc_identidad</isNotEmpty>
+		<isNotEmpty property="imp_prestamo_vinculado" prepend=",">imp_prestamo_vinculado</isNotEmpty>
+		<isNotEmpty property="ind_ingreso_salida" prepend=",">ind_ingreso_salida</isNotEmpty>
+		<isNotEmpty property="des_observacion_ubica" prepend=",">des_observacion_ubica</isNotEmpty>
+		<isNotEmpty property="cod_tipo_moneda" prepend=",">cod_tipo_moneda</isNotEmpty>
+
+		) values (
+
+		<isNotEmpty property="cod_juliano">#cod_juliano#</isNotEmpty>
+		<isNotEmpty property="cod_operador" prepend=",">#cod_operador#</isNotEmpty>
+		<isNotEmpty property="num_cuenta" prepend=",">#num_cuenta#</isNotEmpty>
+		<isNotEmpty property="cod_servicio" prepend=",">#cod_servicio#</isNotEmpty>
+		<isNotEmpty property="fec_vencimiento" prepend=",">#fec_vencimiento#</isNotEmpty>
+		<isNotEmpty property="imp_importe" prepend=",">#imp_importe#</isNotEmpty>
+		<isNotEmpty property="cod_clase_documento" prepend=",">#cod_clase_documento#</isNotEmpty>
+		<isNotEmpty property="cod_agencia" prepend=",">#cod_agencia#</isNotEmpty>
+		<isNotEmpty property="cod_plaza" prepend=",">#cod_plaza#</isNotEmpty>
+		<isNotEmpty property="num_cliente" prepend=",">#num_cliente#</isNotEmpty>
+		
+		<isNotEmpty property="fec_giro" prepend=",">#fec_giro#</isNotEmpty>
+		<isNotEmpty property="fec_desembolso" prepend=",">#fec_desembolso#</isNotEmpty>
+		<isNotEmpty property="fec_proceso" prepend=",">#fec_proceso#</isNotEmpty>
+		<isNotEmpty property="des_nombre" prepend=",">#des_nombre#</isNotEmpty>
+		<isNotEmpty property="des_direccion" prepend=",">#des_direccion#</isNotEmpty>
+		<isNotEmpty property="num_cuenta_aceptante" prepend=",">#num_cuenta_aceptante#</isNotEmpty>
+		<isNotEmpty property="num_tasa_opcional" prepend=",">#num_tasa_opcional#</isNotEmpty>
+		<isNotEmpty property="num_porcentaje_renova" prepend=",">#num_porcentaje_renova#</isNotEmpty>
+		<isNotEmpty property="ind_instruccion_cobro" prepend=",">#ind_instruccion_cobro#</isNotEmpty>
+		<isNotEmpty property="ind_exoneracion_impuest" prepend=",">#ind_exoneracion_impuest#</isNotEmpty>
+		
+		<isNotEmpty property="num_tasa_garantia" prepend=",">#num_tasa_garantia#</isNotEmpty>
+		<isNotEmpty property="cod_planilla" prepend=",">#cod_planilla#</isNotEmpty>
+		<isNotEmpty property="num_cuenta_factoring" prepend=",">#num_cuenta_factoring#</isNotEmpty>
+		<isNotEmpty property="cod_tipo_doc_identidad" prepend=",">#cod_tipo_doc_identidad#</isNotEmpty>
+		<isNotEmpty property="num_doc_identidad" prepend=",">#num_doc_identidad#</isNotEmpty>
+		<isNotEmpty property="imp_prestamo_vinculado" prepend=",">#imp_prestamo_vinculado#</isNotEmpty>
+		<isNotEmpty property="ind_ingreso_salida" prepend=",">#ind_ingreso_salida#</isNotEmpty>
+		<isNotEmpty property="des_observacion_ubica" prepend=",">#des_observacion_ubica#</isNotEmpty>
+		<isNotEmpty property="cod_tipo_moneda" prepend=",">#cod_tipo_moneda#</isNotEmpty>
+		
+		)
+	</insert>
+	
+	<insert id="insertarTempTipo" parameterClass="controlDocBean">
+		INSERT INTO TMP_TIPO11 (
+		<isNotEmpty property="cod_juliano">cod_juliano</isNotEmpty>
+		<isNotEmpty property="cod_operador" prepend=",">cod_operador</isNotEmpty>
+		<isNotEmpty property="num_cuenta" prepend=",">num_cuenta</isNotEmpty>
+		<isNotEmpty property="cod_servicio" prepend=",">cod_servicio</isNotEmpty>
+		<isNotEmpty property="fec_vencimiento" prepend=",">fec_vencimiento</isNotEmpty>
+		<isNotEmpty property="imp_importe" prepend=",">imp_importe</isNotEmpty>
+		<isNotEmpty property="cod_clase_documento" prepend=",">cod_clase_documento</isNotEmpty>
+		<isNotEmpty property="cod_agencia" prepend=",">cod_agencia</isNotEmpty>
+		<isNotEmpty property="cod_plaza" prepend=",">cod_plaza</isNotEmpty>
+		<isNotEmpty property="num_cliente" prepend=",">num_cliente</isNotEmpty>
+		
+		<isNotEmpty property="fec_giro" prepend=",">fec_giro</isNotEmpty>
+		<isNotEmpty property="fec_desembolso" prepend=",">fec_desembolso</isNotEmpty>
+		<isNotEmpty property="fec_proceso" prepend=",">fec_proceso</isNotEmpty>
+		<isNotEmpty property="des_nombre" prepend=",">des_nombre</isNotEmpty>
+		<isNotEmpty property="des_direccion" prepend=",">des_direccion</isNotEmpty>
+		<isNotEmpty property="num_cuenta_aceptante" prepend=",">num_cuenta_aceptante</isNotEmpty>
+		<isNotEmpty property="num_tasa_opcional" prepend=",">num_tasa_opcional</isNotEmpty>
+		<isNotEmpty property="num_porcentaje_renova" prepend=",">num_porcentaje_renova</isNotEmpty>
+		<isNotEmpty property="ind_instruccion_cobro" prepend=",">ind_instruccion_cobro</isNotEmpty>
+		<isNotEmpty property="ind_exoneracion_impuest" prepend=",">ind_exoneracion_impuest</isNotEmpty>
+		
+		<isNotEmpty property="num_tasa_garantia" prepend=",">num_tasa_garantia</isNotEmpty>
+		<isNotEmpty property="cod_planilla" prepend=",">cod_planilla</isNotEmpty>
+		<isNotEmpty property="num_cuenta_factoring" prepend=",">num_cuenta_factoring</isNotEmpty>
+		<isNotEmpty property="cod_tipo_doc_identidad" prepend=",">cod_tipo_doc_identidad</isNotEmpty>
+		<isNotEmpty property="num_doc_identidad" prepend=",">num_doc_identidad</isNotEmpty>
+		<isNotEmpty property="imp_prestamo_vinculado" prepend=",">imp_prestamo_vinculado</isNotEmpty>
+		<isNotEmpty property="ind_ingreso_salida" prepend=",">ind_ingreso_salida</isNotEmpty>
+		<isNotEmpty property="des_observacion_ubica" prepend=",">des_observacion_ubica</isNotEmpty>
+		<isNotEmpty property="cod_tipo_moneda" prepend=",">cod_tipo_moneda</isNotEmpty>
+
+		) values (
+
+		<isNotEmpty property="cod_juliano">#cod_juliano#</isNotEmpty>
+		<isNotEmpty property="cod_operador" prepend=",">#cod_operador#</isNotEmpty>
+		<isNotEmpty property="num_cuenta" prepend=",">#num_cuenta#</isNotEmpty>
+		<isNotEmpty property="cod_servicio" prepend=",">#cod_servicio#</isNotEmpty>
+		<isNotEmpty property="fec_vencimiento" prepend=",">#fec_vencimiento#</isNotEmpty>
+		<isNotEmpty property="imp_importe" prepend=",">#imp_importe#</isNotEmpty>
+		<isNotEmpty property="cod_clase_documento" prepend=",">#cod_clase_documento#</isNotEmpty>
+		<isNotEmpty property="cod_agencia" prepend=",">#cod_agencia#</isNotEmpty>
+		<isNotEmpty property="cod_plaza" prepend=",">#cod_plaza#</isNotEmpty>
+		<isNotEmpty property="num_cliente" prepend=",">#num_cliente#</isNotEmpty>
+		
+		<isNotEmpty property="fec_giro" prepend=",">#fec_giro#</isNotEmpty>
+		<isNotEmpty property="fec_desembolso" prepend=",">#fec_desembolso#</isNotEmpty>
+		<isNotEmpty property="fec_proceso" prepend=",">#fec_proceso#</isNotEmpty>
+		<isNotEmpty property="des_nombre" prepend=",">#des_nombre#</isNotEmpty>
+		<isNotEmpty property="des_direccion" prepend=",">#des_direccion#</isNotEmpty>
+		<isNotEmpty property="num_cuenta_aceptante" prepend=",">#num_cuenta_aceptante#</isNotEmpty>
+		<isNotEmpty property="num_tasa_opcional" prepend=",">#num_tasa_opcional#</isNotEmpty>
+		<isNotEmpty property="num_porcentaje_renova" prepend=",">#num_porcentaje_renova#</isNotEmpty>
+		<isNotEmpty property="ind_instruccion_cobro" prepend=",">#ind_instruccion_cobro#</isNotEmpty>
+		<isNotEmpty property="ind_exoneracion_impuest" prepend=",">#ind_exoneracion_impuest#</isNotEmpty>
+		
+		<isNotEmpty property="num_tasa_garantia" prepend=",">#num_tasa_garantia#</isNotEmpty>
+		<isNotEmpty property="cod_planilla" prepend=",">#cod_planilla#</isNotEmpty>
+		<isNotEmpty property="num_cuenta_factoring" prepend=",">#num_cuenta_factoring#</isNotEmpty>
+		<isNotEmpty property="cod_tipo_doc_identidad" prepend=",">#cod_tipo_doc_identidad#</isNotEmpty>
+		<isNotEmpty property="num_doc_identidad" prepend=",">#num_doc_identidad#</isNotEmpty>
+		<isNotEmpty property="imp_prestamo_vinculado" prepend=",">#imp_prestamo_vinculado#</isNotEmpty>
+		<isNotEmpty property="ind_ingreso_salida" prepend=",">#ind_ingreso_salida#</isNotEmpty>
+		<isNotEmpty property="des_observacion_ubica" prepend=",">#des_observacion_ubica#</isNotEmpty>
+		<isNotEmpty property="cod_tipo_moneda" prepend=",">#cod_tipo_moneda#</isNotEmpty>
+		
+		)
+	</insert>
+	
+	<resultMap id="listaTemp" class="controlDocBean">
+	
+		<result property="cod_juliano" column="cod_juliano" />
+		<result property="cod_operador" column="cod_operador" />
+		<result property="num_cuenta" column="num_cuenta" />
+		<result property="cod_servicio" column="cod_servicio" />
+		<result property="fec_vencimiento" column="fec_vencimiento" />
+		<result property="imp_importe" column="imp_importe" />
+		<result property="cod_clase_documento" column="cod_clase_documento" />
+		<result property="cod_agencia" column="cod_agencia" />
+		<result property="cod_plaza" column="cod_plaza" />
+		<result property="num_cliente" column="num_cliente" />
+		<result property="fec_giro" column="fec_giro" />
+		<result property="fec_desembolso" column="fec_desembolso" />
+		<result property="fec_proceso" column="fec_proceso" />
+		<result property="des_nombre" column="des_nombre" />
+		<result property="des_direccion" column="des_direccion" />
+		<result property="num_cuenta_aceptante" column="num_cuenta_aceptante" />
+		<result property="num_tasa_opcional" column="num_tasa_opcional" />
+		<result property="num_porcentaje_renova" column="num_porcentaje_renova" />
+		<result property="ind_instruccion_cobro" column="ind_instruccion_cobro" />
+		
+		<result property="ind_exoneracion_impuest" column="ind_exoneracion_impuest" />
+		<result property="num_tasa_garantia" column="num_tasa_garantia" />
+		<result property="cod_planilla" column="cod_planilla" />
+		<result property="num_cuenta_factoring" column="num_cuenta_factoring" />
+		<result property="cod_tipo_doc_identidad" column="cod_tipo_doc_identidad" />
+		<result property="num_doc_identidad" column="num_doc_identidad" />
+		<result property="imp_prestamo_vinculado" column="imp_prestamo_vinculado" />
+		<result property="ind_ingreso_salida" column="ind_ingreso_salida" />
+		<result property="des_observacion_ubica" column="des_observacion_ubica" />
+		<result property="cod_tipo_moneda" column="cod_tipo_moneda" />
+		
+	</resultMap>
+	
+	<select id="obtenerTempCheqcar" resultMap="listaTemp">
+		SELECT 	cod_operador, num_cuenta, cod_servicio, cod_juliano, fec_vencimiento,
+				imp_importe, cod_clase_documento, cod_agencia, cod_plaza, num_cliente,
+				fec_giro, fec_desembolso, fec_proceso, des_nombre, des_direccion,
+				num_cuenta_aceptante, num_tasa_opcional, num_porcentaje_renova, ind_instruccion_cobro,
+				ind_exoneracion_impuest, num_tasa_garantia, cod_planilla, num_cuenta_factoring,
+				cod_tipo_doc_identidad, num_doc_identidad, imp_prestamo_vinculado, ind_ingreso_salida,
+				des_observacion_ubica, cod_tipo_moneda
+		FROM TMP_CHEQCAR1
+	</select>
+	
+	<select id="obtenerTempTipo" resultMap="listaTemp">
+		SELECT 	cod_operador, num_cuenta, cod_servicio, cod_juliano, fec_vencimiento,
+				imp_importe, cod_clase_documento, cod_agencia, cod_plaza, num_cliente,
+				fec_giro, fec_desembolso, fec_proceso, des_nombre, des_direccion,
+				num_cuenta_aceptante, num_tasa_opcional, num_porcentaje_renova, ind_instruccion_cobro,
+				ind_exoneracion_impuest, num_tasa_garantia, cod_planilla, num_cuenta_factoring,
+				cod_tipo_doc_identidad, num_doc_identidad, imp_prestamo_vinculado, ind_ingreso_salida,
+				des_observacion_ubica, cod_tipo_moneda
+		FROM TMP_TIPO11
+	</select>
+	
+	<delete id="borrarTempCheqcar">
+		DELETE FROM TMP_CHEQCAR1
+	</delete>
+	
+	<delete id="borrarTempTipo">
+		DELETE FROM TMP_TIPO11
+	</delete>
+	
+</sqlMap>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:context="http://www.springframework.org/schema/context" 
+	xmlns:jee="http://www.springframework.org/schema/jee" 
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd 
+	http://www.springframework.org/schema/context 
+	http://www.springframework.org/schema/context/spring-context.xsd 
+	http://www.springframework.org/schema/jee 
+	http://www.springframework.org/schema/jee/spring-jee.xsd ">
+	
+	<context:component-scan base-package="com.bbva.control.boveda" />
+	
+	<context:annotation-config />
+	
+<!-- 	<jee:jndi-lookup id="boveda" jndi-name="boveda" resource-ref="true" cache="true" /> -->
+<!-- 	<jee:jndi-lookup proxy-interface="javax.sql.DataSource" lookup-on-startup="false" jndi-name="java:jboss/datasources/boveda" id="boveda" resource-ref="true" cache="true" /> -->
+	<bean id="boveda" class="org.springframework.jndi.JndiObjectFactoryBean">
+	    <property name="resourceRef">
+	      <value>true</value>
+	    </property>
+	    <property name="cache" value="true"></property>	   		    
+	    <property name="jndiName" value="java:jboss/datasources/boveda" />
+	 </bean>
+	<!-- ======================== SqlMap setup for iBATIS Database Layer =============== -->
+	
+	<bean id="SqlMapClientBoveda" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
+		<property name="configLocation" value="classpath:ctrl-bbva-shalib-sqlmap-config.xml"/>
+		<property name="dataSource" ref="boveda" />
+	</bean>
+	
+	<!-- ========================= DAO DEFINITIONS: IBATIS IMPLEMENTATIONS ========================= -->
+	<!-- *************************************** RECAUDA **************************************** -->
+
+	<bean id="controlDocDAO" class="com.bbva.control.boveda.model.dao.ibatis.SqlMapControlDocDAOImpl">
+		<property name="sqlMapClient" ref="SqlMapClientBoveda" />
+	</bean>
+	
+	<bean id="letraDAO" class="com.bbva.control.boveda.model.dao.ibatis.SqlMapLetraDAOImpl">
+		<property name="sqlMapClient" ref="SqlMapClientBoveda" />
+	</bean>
+	
+	<bean id="detalleControlDocDAO" class="com.bbva.control.boveda.model.dao.ibatis.SqlMapDetalleControlDocDAOImpl">
+		<property name="sqlMapClient" ref="SqlMapClientBoveda" />
+	</bean>
+	
+	<bean id="docRenovadoDAO" class="com.bbva.control.boveda.model.dao.ibatis.SqlMapDocRenovadoDAOImpl">
+		<property name="sqlMapClient" ref="SqlMapClientBoveda" />
+	</bean>
+	
+	<bean id="documentoRenovDAO" class="com.bbva.control.boveda.model.dao.ibatis.SqlMapDocumentoRenovDAOImpl">
+		<property name="sqlMapClient" ref="SqlMapClientBoveda" />
+	</bean>
+	
+	<bean id="tempCheqcarDAO" class="com.bbva.control.boveda.model.dao.ibatis.SqlMapTempCheqcarDAOImpl">
+		<property name="sqlMapClient" ref="SqlMapClientBoveda" />
+	</bean>
+	
+	<bean id="tempTipo11DAO" class="com.bbva.control.boveda.model.dao.ibatis.SqlMapTempTipo11DAOImpl">
+		<property name="sqlMapClient" ref="SqlMapClientBoveda" />
+	</bean>
+	
+	<bean id="docDevueltoDAO" class="com.bbva.control.boveda.model.dao.ibatis.SqlMapDocDevueltoDAOImpl">
+		<property name="sqlMapClient" ref="SqlMapClientBoveda" />
+	</bean>
+	
+	<bean id="parametrosDAO" class="com.bbva.control.boveda.model.dao.ibatis.SqlMapParametrosDAOImpl">
+		<property name="sqlMapClient" ref="SqlMapClientBoveda" />
+	</bean>
+	
+	<bean id="devolucionesDAO" class="com.bbva.control.boveda.model.dao.ibatis.SqlMapDevolucionesDAOImpl">
+		<property name="sqlMapClient" ref="SqlMapClientBoveda" />
+	</bean>
+</beans>

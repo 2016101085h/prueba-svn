@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMapConfig PUBLIC "-//ibatis.apache.org//DTD SQL Map Config 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-config-2.dtd">
+
+<sqlMapConfig>
+
+	<settings cacheModelsEnabled="true" enhancementEnabled="true"
+		useStatementNamespaces="true" maxSessions="64" maxTransactions="8"
+		maxRequests="128" />
+
+	<!-- DB - BOVEDA -->
+	<sqlMap resource="com/bbva/control/boveda/model/dao/ibatis/maps/ControlDoc.xml" />
+	<sqlMap resource="com/bbva/control/boveda/model/dao/ibatis/maps/DetalleControlDoc.xml" />
+	
+	<sqlMap resource="com/bbva/control/boveda/model/dao/ibatis/maps/Letra.xml" />
+	
+	<sqlMap resource="com/bbva/control/boveda/model/dao/ibatis/maps/DocRenovado.xml" />
+	<sqlMap resource="com/bbva/control/boveda/model/dao/ibatis/maps/DocDevuelto.xml" />
+	<sqlMap resource="com/bbva/control/boveda/model/dao/ibatis/maps/Renovaciones.xml" />
+	<sqlMap resource="com/bbva/control/boveda/model/dao/ibatis/maps/Devoluciones.xml" />
+	<sqlMap resource="com/bbva/control/boveda/model/dao/ibatis/maps/Temp.xml" />
+	<sqlMap resource="com/bbva/control/boveda/model/dao/ibatis/maps/Parametros.xml" />
+
+</sqlMapConfig>

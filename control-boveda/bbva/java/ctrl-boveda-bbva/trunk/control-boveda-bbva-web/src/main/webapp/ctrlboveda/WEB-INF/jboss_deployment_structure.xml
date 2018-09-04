@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jboss-deployment-structure>
+     <ear-subdeployments-isolated>false</ear-subdeployments-isolated>
+     <deployment>
+          <exclusions>
+               <module name="deployment.Plugins.ear.control-model-ifz.jar" />
+               <module name="deployment.Plugins.ear.control-model-imp.jar" />
+               <module name="deployment.Plugins.ear.control-service-ifz.jar" />
+               <module name="deployment.Plugins.ear.control-service-imp.jar" />
+         </exclusions>
+<!--           <dependencies> -->
+<!--                <module name="deployment.Plugins.ear.main.jar" export="true" /> -->
+<!--           </dependencies> -->
+     </deployment>
+     <sub-deployment name="ctrlboveda.war">
+          <dependencies>
+               <module name="deployment.Plugins.ear.control-model-ifz.jar" />
+               <module name="deployment.Plugins.ear.control-model-imp.jar" />
+               <module name="deployment.Plugins.ear.control-service-ifz.jar" />
+               <module name="deployment.Plugins.ear.control-service-imp.jar" />
+          </dependencies>
+     </sub-deployment>
+</jboss-deployment-structure>
