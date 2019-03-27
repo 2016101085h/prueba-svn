@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context 
+	http://www.springframework.org/schema/context/spring-context.xsd">
+	
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver" p:prefix="/WEB-INF/jsp/" p:suffix=".jsp" p:viewClass="org.springframework.web.servlet.view.JstlView" />
+	
+	<bean id="mostrarFormConsulta" class="com.bbva.control.boveda.controller.BovedaController">
+		<property name="methodNameResolver" ref="methodEvaluacionResolver" />
+		<property name="jsonView" ref="jsonView" />
+		<property name="procesarBovedaService" ref="procesarBovedaService" />
+	</bean>	
+	
+	<bean id="methodEvaluacionResolver" class="org.springframework.web.servlet.mvc.multiaction.ParameterMethodNameResolver">
+		<property name="paramName" value="accion" />
+	</bean>
+	
+	<bean id="urlHandlerMapping"
+		class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="mappings">
+			<value>
+				/consulta.htm=mostrarFormConsulta
+			</value>
+		</property>
+	</bean>
+	
+	<!-- INICIO -->
+	<!-- View Resolvers html, json, xml -->
+	<bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+		<property name="mediaTypes">
+			<map>
+				<entry key="html" value="text/html"></entry>
+				<entry key="json" value="application/json"></entry>
+				<entry key="xml" value="application/xml"></entry>
+			</map>
+		</property>
+		<property name="viewResolvers">
+			<list>
+				<bean class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+					<property name="viewClass" value="org.springframework.web.servlet.view.JstlView"></property>
+					<property name="prefix" value="/WEB-INF/jsp/"></property>
+					<property name="suffix" value=".jsp"></property>
+				</bean>
+			</list>
+		</property>
+		<property name="defaultViews">
+			<list>
+				<bean class="org.springframework.web.servlet.view.json.MappingJackson2JsonView" />
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="jsonView" class="pe.gob.sunat.framework.spring.web.view.JsonView">
+		<property name="contentType">
+			<value>text/plain;charset=utf-8</value>
+		</property>
+	</bean>
+	
+	<import resource="classpath:ctrl-boveda-shalib-service.xml"/>
+	<import resource="classpath:ctrl-boveda-shalib-service-map.xml"/>
+	
+	<bean id="batchController" class="com.bbva.control.boveda.controller.BatchController" />
+
+	
+	<bean id="jobSalidas"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="batchController"></property>
+		<property name="targetMethod" value="procesarSalidas"></property>
+		<property name="concurrent" value="false"></property>
+	</bean>
+	
+	<bean id="simpleTrigger"
+		class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="jobSalidas" />
+		<property name="cronExpression" value="0 0 11 ? * MON-FRI *" />
+	</bean>
+
+	<bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="jobDetails">
+			<list>
+				<ref bean="jobSalidas" />
+			</list>
+		</property>
+		<property name="triggers">
+			<list>
+				<ref bean="simpleTrigger" />
+			</list>
+		</property>
+	</bean>  
+	
+	<bean id="jobIngresos"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="batchController"></property>
+		<property name="targetMethod" value="procesarIngresos"></property>
+		<property name="concurrent" value="false"></property>
+	</bean>
+	
+	<bean id="simpleTriggerIngresos"
+		class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="jobIngresos" />
+		<property name="cronExpression" value="0 33 11 ? * MON-FRI *" />
+	</bean>
+
+	<bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="jobDetails">
+			<list>
+				<ref bean="jobIngresos" />
+			</list>
+		</property>
+		<property name="triggers">
+			<list>
+				<ref bean="simpleTriggerIngresos" />
+			</list>
+		</property>
+	</bean>  
+	
+</beans>

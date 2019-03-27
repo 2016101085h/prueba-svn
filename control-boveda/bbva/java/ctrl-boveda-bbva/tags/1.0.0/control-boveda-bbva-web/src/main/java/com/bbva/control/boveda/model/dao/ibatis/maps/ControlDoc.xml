@@ -1,0 +1,466 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="controlDoc">
+
+	<typeAlias alias="controlDocBean" type="com.bbva.control.boveda.bean.ControlDocBean" />
+	
+	<insert id="insertar" parameterClass="com.bbva.control.boveda.bean.ControlDocBean">
+		insert into TM_CONTROL_DOC (
+
+		<isNotEmpty property="cod_juliano">cod_juliano</isNotEmpty>
+		<isNotEmpty property="cod_operador" prepend=",">cod_operador</isNotEmpty>
+		<isNotEmpty property="num_cuenta" prepend=",">num_cuenta</isNotEmpty>
+		<isNotEmpty property="cod_servicio" prepend=",">cod_servicio</isNotEmpty>
+		<isNotEmpty property="fec_vencimiento" prepend=",">fec_vencimiento</isNotEmpty>
+		<isNotEmpty property="imp_importe" prepend=",">imp_importe</isNotEmpty>
+		<isNotEmpty property="cod_clase_documento" prepend=",">cod_clase_documento</isNotEmpty>
+		<isNotEmpty property="cod_agencia" prepend=",">cod_agencia</isNotEmpty>
+		<isNotEmpty property="cod_plaza" prepend=",">cod_plaza</isNotEmpty>
+		<isNotEmpty property="num_cliente" prepend=",">num_cliente</isNotEmpty>
+		
+		<isNotEmpty property="fec_giro" prepend=",">fec_giro</isNotEmpty>
+		<isNotEmpty property="fec_desembolso" prepend=",">fec_desembolso</isNotEmpty>
+		<isNotEmpty property="fec_proceso" prepend=",">fec_proceso</isNotEmpty>
+		<isNotEmpty property="des_nombre" prepend=",">des_nombre</isNotEmpty>
+		<isNotEmpty property="des_direccion" prepend=",">des_direccion</isNotEmpty>
+		<isNotEmpty property="num_cuenta_aceptante" prepend=",">num_cuenta_aceptante</isNotEmpty>
+		<isNotEmpty property="num_tasa_opcional" prepend=",">num_tasa_opcional</isNotEmpty>
+		<isNotEmpty property="num_porcentaje_renova" prepend=",">num_porcentaje_renova</isNotEmpty>
+		<isNotEmpty property="ind_instruccion_cobro" prepend=",">ind_instruccion_cobro</isNotEmpty>
+		<isNotEmpty property="ind_exoneracion_impuest" prepend=",">ind_exoneracion_impuest</isNotEmpty>
+		
+		<isNotEmpty property="num_tasa_garantia" prepend=",">num_tasa_garantia</isNotEmpty>
+		<isNotEmpty property="cod_planilla" prepend=",">cod_planilla</isNotEmpty>
+		<isNotEmpty property="num_cuenta_factoring" prepend=",">num_cuenta_factoring</isNotEmpty>
+		<isNotEmpty property="cod_tipo_doc_identidad" prepend=",">cod_tipo_doc_identidad</isNotEmpty>
+		<isNotEmpty property="num_doc_identidad" prepend=",">num_doc_identidad</isNotEmpty>
+		<isNotEmpty property="imp_prestamo_vinculado" prepend=",">imp_prestamo_vinculado</isNotEmpty>
+		<isNotEmpty property="ind_ingreso_salida" prepend=",">ind_ingreso_salida</isNotEmpty>
+		<isNotEmpty property="des_observacion_ubica" prepend=",">des_observacion_ubica</isNotEmpty>
+		<isNotEmpty property="cod_tipo_moneda" prepend=",">cod_tipo_moneda</isNotEmpty>
+		
+		<isNotEmpty property="num_letra" prepend=",">num_letra</isNotEmpty>
+		<isNotEmpty property="cod_tipo_movimiento" prepend=",">cod_tipo_movimiento</isNotEmpty>
+		<isNotEmpty property="fec_nuevo_vencimiento" prepend=",">fec_nuevo_vencimiento</isNotEmpty>
+		<isNotEmpty property="imp_nuevo_importe" prepend=",">imp_nuevo_importe</isNotEmpty>
+
+		) values (
+
+		<isNotEmpty property="cod_juliano">#cod_juliano#</isNotEmpty>
+		<isNotEmpty property="cod_operador" prepend=",">#cod_operador#</isNotEmpty>
+		<isNotEmpty property="num_cuenta" prepend=",">#num_cuenta#</isNotEmpty>
+		<isNotEmpty property="cod_servicio" prepend=",">#cod_servicio#</isNotEmpty>
+		<isNotEmpty property="fec_vencimiento" prepend=",">#fec_vencimiento#</isNotEmpty>
+		<isNotEmpty property="imp_importe" prepend=",">#imp_importe#</isNotEmpty>
+		<isNotEmpty property="cod_clase_documento" prepend=",">#cod_clase_documento#</isNotEmpty>
+		<isNotEmpty property="cod_agencia" prepend=",">#cod_agencia#</isNotEmpty>
+		<isNotEmpty property="cod_plaza" prepend=",">#cod_plaza#</isNotEmpty>
+		<isNotEmpty property="num_cliente" prepend=",">#num_cliente#</isNotEmpty>
+		
+		<isNotEmpty property="fec_giro" prepend=",">#fec_giro#</isNotEmpty>
+		<isNotEmpty property="fec_desembolso" prepend=",">#fec_desembolso#</isNotEmpty>
+		<isNotEmpty property="fec_proceso" prepend=",">#fec_proceso#</isNotEmpty>
+		<isNotEmpty property="des_nombre" prepend=",">#des_nombre#</isNotEmpty>
+		<isNotEmpty property="des_direccion" prepend=",">#des_direccion#</isNotEmpty>
+		<isNotEmpty property="num_cuenta_aceptante" prepend=",">#num_cuenta_aceptante#</isNotEmpty>
+		<isNotEmpty property="num_tasa_opcional" prepend=",">#num_tasa_opcional#</isNotEmpty>
+		<isNotEmpty property="num_porcentaje_renova" prepend=",">#num_porcentaje_renova#</isNotEmpty>
+		<isNotEmpty property="ind_instruccion_cobro" prepend=",">#ind_instruccion_cobro#</isNotEmpty>
+		<isNotEmpty property="ind_exoneracion_impuest" prepend=",">#ind_exoneracion_impuest#</isNotEmpty>
+		
+		<isNotEmpty property="num_tasa_garantia" prepend=",">#num_tasa_garantia#</isNotEmpty>
+		<isNotEmpty property="cod_planilla" prepend=",">#cod_planilla#</isNotEmpty>
+		<isNotEmpty property="num_cuenta_factoring" prepend=",">#num_cuenta_factoring#</isNotEmpty>
+		<isNotEmpty property="cod_tipo_doc_identidad" prepend=",">#cod_tipo_doc_identidad#</isNotEmpty>
+		<isNotEmpty property="num_doc_identidad" prepend=",">#num_doc_identidad#</isNotEmpty>
+		<isNotEmpty property="imp_prestamo_vinculado" prepend=",">#imp_prestamo_vinculado#</isNotEmpty>
+		<isNotEmpty property="ind_ingreso_salida" prepend=",">#ind_ingreso_salida#</isNotEmpty>
+		<isNotEmpty property="des_observacion_ubica" prepend=",">#des_observacion_ubica#</isNotEmpty>
+		<isNotEmpty property="cod_tipo_moneda" prepend=",">#cod_tipo_moneda#</isNotEmpty>
+		
+		<isNotEmpty property="num_letra" prepend=",">#num_letra#</isNotEmpty>
+		<isNotEmpty property="cod_tipo_movimiento" prepend=",">#cod_tipo_movimiento#</isNotEmpty>
+		<isNotEmpty property="fec_nuevo_vencimiento" prepend=",">#fec_nuevo_vencimiento#</isNotEmpty>
+		<isNotEmpty property="imp_nuevo_importe" prepend=",">#imp_nuevo_importe#</isNotEmpty>
+		
+		)
+	</insert>
+	
+	<update id="actualizar" parameterClass="com.bbva.control.boveda.bean.ControlDocBean">
+		UPDATE TM_CONTROL_DOC
+			SET ind_ingreso_salida = #ind_ingreso_salida#,
+				des_observacion_ubica = #des_observacion_ubica#,
+				num_letra = #num_letra#,
+				cod_tipo_movimiento = #cod_tipo_movimiento#,
+				fec_nuevo_vencimiento = #fec_nuevo_vencimiento#,
+				cod_forma_pago = #cod_forma_pago#,
+				fec_movimiento = #fec_movimiento#,
+				imp_nuevo_importe = #imp_nuevo_importe#
+		WHERE 
+			cod_juliano = #cod_juliano#
+			AND fec_vencimiento = #fec_vencimiento#
+	</update>
+	
+	<select id="obtenerDocXLetra" parameterClass="java.util.Map" resultClass="controlDocBean">
+		SELECT 	cod_operador, num_cuenta, cod_servicio, cod_juliano, fec_vencimiento,
+				imp_importe, cod_clase_documento, cod_agencia, cod_plaza, num_cliente,
+				fec_giro, fec_desembolso, fec_proceso, des_nombre, des_direccion,
+				num_cuenta_aceptante, num_tasa_opcional, num_porcentaje_renova, ind_instruccion_cobro,
+				ind_exoneracion_impuest, num_tasa_garantia, cod_planilla, num_cuenta_factoring,
+				cod_tipo_doc_identidad, num_doc_identidad, imp_prestamo_vinculado, ind_ingreso_salida,
+				des_observacion_ubica, cod_tipo_moneda
+		FROM	TM_CONTROL_DOC
+		WHERE 1 = 1
+		<isNotNull prepend="AND" property="numero_banco"> cod_juliano = #numero_banco#</isNotNull>
+		<isNotNull prepend="AND" property="fecha_vencimiento"> fec_vencimiento = #fecha_vencimiento#</isNotNull>
+	</select>
+	
+	<resultMap id="listaGeneral" class="controlDocBean">
+		<result property="fec_proceso" column="fec_proceso" />
+		<result property="imp_importe" column="imp_importe" />
+		<result property="ind_ingreso_salida" column="ind_ingreso_salida" />
+		<result property="cod_tipo_moneda" column="cod_tipo_moneda" />
+	</resultMap>
+	
+	<select id="obtenerListDocMap" parameterClass="java.util.Map" resultMap="listaGeneral">
+		SELECT	fec_proceso, imp_importe, ind_ingreso_salida, cod_tipo_moneda 
+		FROM	TM_CONTROL_DOC
+		WHERE 1 = 1
+		<isNotNull prepend="AND" property="consGeneral"> fec_proceso BETWEEN #fecVenIni# AND #fecVenFin#</isNotNull>
+		<isNotNull prepend="AND" property="ind_ingreso_salida"> ind_ingreso_salida = #ind_ingreso_salida#</isNotNull>
+		
+	</select>
+	
+	<resultMap id="listaControlDetallMap" class="controlDocBean">
+	
+		<result property="cod_operador" column="cod_operador" />
+		<result property="cod_servicio" column="cod_servicio" />
+		<result property="cod_juliano" column="cod_juliano" />
+		<result property="fec_vencimiento" column="fec_vencimiento" />
+		<result property="imp_importe" column="imp_importe" />
+		<result property="cod_clase_documento" column="cod_clase_documento" />
+		<result property="cod_agencia" column="cod_agencia" />
+		<result property="cod_plaza" column="cod_plaza" />
+		<result property="fec_proceso" column="fec_proceso" />
+		<result property="des_nombre" column="des_nombre" />
+		
+		<result property="ind_instruccion_cobro" column="ind_instruccion_cobro" />
+		<result property="cod_planilla" column="cod_planilla" />
+		<result property="ind_ingreso_salida" column="ind_ingreso_salida" />
+		<result property="des_observacion_ubica" column="des_observacion_ubica" />
+		<result property="cod_tipo_moneda" column="cod_tipo_moneda" />
+		<result property="cod_tipo_movimiento" column="cod_tipo_movimiento" />
+		<result property="cod_forma_pago" column="cod_forma_pago" />
+		<result property="fec_nuevo_vencimiento" column="fec_nuevo_vencimiento" />
+		<result property="imp_nuevo_importe" column="imp_nuevo_importe" />
+		<result property="fec_movimiento" column="fec_movimiento" />
+		
+	</resultMap>
+	
+	<select id="listConsEspecifica" parameterClass="java.util.Map" resultMap="listaControlDetallMap">
+		SELECT 	cod_operador as cod_operador,
+				COD_SERVICIO as cod_servicio,
+				cod_juliano as cod_juliano, 
+				convert(varchar(10), cast(FEC_VENCIMIENTO as date),103) as fec_vencimiento,
+				CONVERT(varchar, CAST(IMP_IMPORTE AS money)/100, 1) as imp_importe, 
+				COD_CLASE_DOCUMENTO as cod_clase_documento,
+				COD_AGENCIA as cod_agencia,
+				cod_plaza as cod_plaza,
+				convert(varchar(10), cast(FEC_PROCESO as date),103) as fec_proceso,
+				CASE WHEN DES_NOMBRE IS NULL THEN '' ELSE DES_NOMBRE END as des_nombre, 
+				CASE WHEN ind_instruccion_cobro IS NULL THEN '' ELSE ind_instruccion_cobro END as ind_instruccion_cobro,
+				CASE WHEN COD_PLANILLA IS NULL THEN '' ELSE COD_PLANILLA END as cod_planilla,
+				<!--  IND_INGRESO_SALIDA as ind_ingreso_salida, --> 
+				CASE WHEN IND_INGRESO_SALIDA = '0' THEN 'NO' ELSE CASE WHEN IND_INGRESO_SALIDA = '1' THEN 'SI' ELSE CASE WHEN IND_INGRESO_SALIDA = '2' THEN 'NO' END END END as ind_ingreso_salida,
+				CASE WHEN DES_OBSERVACION_UBICA IS NULL THEN '' ELSE DES_OBSERVACION_UBICA END as des_observacion_ubica,
+				CASE WHEN COD_TIPO_MONEDA = '1' THEN 'Soles' ELSE CASE WHEN COD_TIPO_MONEDA = '2' THEN 'Dolares' END END as cod_tipo_moneda,
+				COD_TIPO_MOVIMIENTO AS cod_tipo_movimiento,
+				CASE WHEN COD_FORMA_PAGO IS NULL THEN '' ELSE COD_FORMA_PAGO END as cod_forma_pago,
+				<!-- CASE WHEN FEC_NUEVO_VENCIMIENTO IS NULL THEN '' ELSE FEC_NUEVO_VENCIMIENTO END as fec_nuevo_vencimiento, -->
+				CASE WHEN FEC_NUEVO_VENCIMIENTO IS NULL THEN '' ELSE CASE WHEN FEC_NUEVO_VENCIMIENTO = '00000000' THEN '00/00/0000' ELSE convert(varchar(10), cast(FEC_NUEVO_VENCIMIENTO as date),103) 	END END AS FEC_NUEVO_VENCIMIENTO, 
+				CASE WHEN FEC_MOVIMIENTO IS NULL THEN '' ELSE (convert(varchar(10), cast(FEC_MOVIMIENTO as date),103)) END as fec_movimiento,
+				CASE WHEN IMP_NUEVO_IMPORTE IS NULL THEN '' ELSE CONVERT(varchar, CAST(IMP_NUEVO_IMPORTE AS money)/100, 1)   END as imp_nuevo_importe
+		FROM	tm_control_doc
+		WHERE 	1 = 1
+		<isNotNull prepend="AND" property="operador"> cod_operador = #operador#</isNotNull>
+		<isNotNull prepend="AND" property="consFecProc"> fec_movimiento BETWEEN #fecProcIni# AND #fecProcFin#</isNotNull>
+		<isNotNull prepend="AND" property="agencia"> cod_agencia = #agencia#</isNotNull>
+		<isNotNull prepend="AND" property="consJuli"> cod_juliano = #juliIni#</isNotNull>
+		<isNotNull prepend="AND" property="claseDoc"> cod_clase_documento = #claseDoc#</isNotNull>
+		<isNotNull prepend="AND" property="tipoMoneda"> cod_tipo_moneda = #tipoMoneda#</isNotNull>
+		<isNotNull prepend="AND" property="juliano"> cod_juliano = #juliano#</isNotNull>
+		<isNotNull prepend="AND" property="consLetra"> num_letra BETWEEN #letraIni# AND #letraFin#</isNotNull>
+		<isNotNull prepend="AND" property="tipoMov"> cod_tipo_movimiento = #tipoMov#</isNotNull>
+		
+		<isNotNull prepend="AND" property="estadoActSi"> ind_ingreso_salida in <![CDATA[('1','2')]]></isNotNull>
+		<isNotNull prepend="AND" property="estadoActNo"> ind_ingreso_salida = <![CDATA[('0')]]></isNotNull>
+		<isNotNull prepend="AND" property="planilla"> cod_planilla = #planilla#</isNotNull>
+		<isNotNull prepend="AND" property="plaza"> cod_plaza = #plaza#</isNotNull>
+		
+		<isNotNull prepend="AND" property="tipoDocumento"> cod_clase_documento = #tipoDocumento#</isNotNull>
+		<isNotNull prepend="AND" property="ind_ingreso_salida"> ind_ingreso_salida = #ind_ingreso_salida#</isNotNull>
+		
+		<isNotNull prepend="AND" property="cartera"> num_cuenta = #cartera#</isNotNull>
+		<isNotNull prepend="AND" property="servicio"> cod_servicio = #servicio#</isNotNull>
+		<isNotNull prepend="AND" property="formaPago"> cod_forma_pago = #formaPago#</isNotNull>
+		<isNotNull prepend="AND" property="insCobro"> ind_instruccion_cobro = #insCobro#</isNotNull>
+		<isNotNull prepend="AND" property="anhioVenc"> fec_vencimiento between #anhioVencIni# and #anhioVencFin#</isNotNull>
+<!-- 		ORDER BY cod_juliano desc -->
+	</select>
+	
+	<select id="docuXServicio" parameterClass="java.util.Map" resultClass="java.util.HashMap">
+	
+		SELECT DISTINCT COD_SERVICIO AS COD_SERVICIO,
+				(select count(COD_CLASE_DOCUMENTO) from TM_CONTROL_DOC 
+				where COD_SERVICIO= #cod_servicio# and COD_CLASE_DOCUMENTO = '01' and COD_TIPO_MONEDA = '1' 
+				<isNotNull prepend="AND" property="ind_ingreso_salida"> IND_INGRESO_SALIDA = #ind_ingreso_salida#</isNotNull>
+				) AS CANTSOL_LPA,
+				(select  sum (convert (decimal(12,0), IMP_IMPORTE)) from TM_CONTROL_DOC 
+				where COD_SERVICIO= #cod_servicio# and COD_CLASE_DOCUMENTO = '01' and COD_TIPO_MONEDA = '1' 
+				<isNotNull prepend="AND" property="ind_ingreso_salida"> IND_INGRESO_SALIDA = #ind_ingreso_salida#</isNotNull>
+				) AS SUMSOL_LPA,
+				(select count(COD_CLASE_DOCUMENTO) from TM_CONTROL_DOC 
+				where COD_SERVICIO= #cod_servicio# and COD_CLASE_DOCUMENTO = '01' and COD_TIPO_MONEDA = '2' 
+				<isNotNull prepend="AND" property="ind_ingreso_salida"> IND_INGRESO_SALIDA = #ind_ingreso_salida#</isNotNull>
+				) AS CANTDOL_LPA,
+				(select  sum (convert (decimal(12,0), IMP_IMPORTE)) from TM_CONTROL_DOC 
+				where COD_SERVICIO= #cod_servicio# and COD_CLASE_DOCUMENTO = '01' and COD_TIPO_MONEDA = '2' 
+				<isNotNull prepend="AND" property="ind_ingreso_salida"> IND_INGRESO_SALIDA = #ind_ingreso_salida#</isNotNull>
+				) AS SUMDOL_LPA,
+				
+				(select count(COD_CLASE_DOCUMENTO) from TM_CONTROL_DOC 
+				where COD_SERVICIO= #cod_servicio# and COD_CLASE_DOCUMENTO = '02' and COD_TIPO_MONEDA = '1' 
+				<isNotNull prepend="AND" property="ind_ingreso_salida"> IND_INGRESO_SALIDA = #ind_ingreso_salida#</isNotNull>
+				) AS CANTSOL_LA,
+				(select  sum (convert (decimal(12,0), IMP_IMPORTE)) from TM_CONTROL_DOC 
+				where COD_SERVICIO= #cod_servicio# and COD_CLASE_DOCUMENTO = '02' and COD_TIPO_MONEDA = '1' 
+				<isNotNull prepend="AND" property="ind_ingreso_salida"> IND_INGRESO_SALIDA = #ind_ingreso_salida#</isNotNull>
+				) AS SUMSOL_LA,
+				(select count(COD_CLASE_DOCUMENTO) from TM_CONTROL_DOC 
+				where COD_SERVICIO= #cod_servicio# and COD_CLASE_DOCUMENTO = '02' and COD_TIPO_MONEDA = '2' 
+				<isNotNull prepend="AND" property="ind_ingreso_salida"> IND_INGRESO_SALIDA = #ind_ingreso_salida#</isNotNull>
+				) AS CANTDOL_LA,
+				(select  sum (convert (decimal(12,0), IMP_IMPORTE)) from TM_CONTROL_DOC 
+				where COD_SERVICIO= #cod_servicio# and COD_CLASE_DOCUMENTO = '02' and COD_TIPO_MONEDA = '2' 
+				<isNotNull prepend="AND" property="ind_ingreso_salida"> IND_INGRESO_SALIDA = #ind_ingreso_salida#</isNotNull>
+				) AS SUMDOL_LA,
+				
+				(select count(COD_CLASE_DOCUMENTO) from TM_CONTROL_DOC 
+				where COD_SERVICIO= #cod_servicio# and COD_CLASE_DOCUMENTO = '03' and COD_TIPO_MONEDA = '1' 
+				<isNotNull prepend="AND" property="ind_ingreso_salida"> IND_INGRESO_SALIDA = #ind_ingreso_salida#</isNotNull>
+				) AS CANTSOL_FCF,
+				(select  sum (convert (decimal(12,0), IMP_IMPORTE)) from TM_CONTROL_DOC 
+				where COD_SERVICIO= #cod_servicio# and COD_CLASE_DOCUMENTO = '03' and COD_TIPO_MONEDA = '1' 
+				<isNotNull prepend="AND" property="ind_ingreso_salida"> IND_INGRESO_SALIDA = #ind_ingreso_salida#</isNotNull>
+				) AS SUMSOL_FCF,
+				(select count(COD_CLASE_DOCUMENTO) from TM_CONTROL_DOC 
+				where COD_SERVICIO= #cod_servicio# and COD_CLASE_DOCUMENTO = '03' and COD_TIPO_MONEDA = '2' 
+				<isNotNull prepend="AND" property="ind_ingreso_salida"> IND_INGRESO_SALIDA = #ind_ingreso_salida#</isNotNull>
+				) AS CANTDOL_FCF,
+				(select  sum (convert (decimal(12,0), IMP_IMPORTE)) from TM_CONTROL_DOC 
+				where COD_SERVICIO= #cod_servicio# and COD_CLASE_DOCUMENTO = '03' and COD_TIPO_MONEDA = '2' 
+				<isNotNull prepend="AND" property="ind_ingreso_salida"> IND_INGRESO_SALIDA = #ind_ingreso_salida#</isNotNull>
+				) AS SUMDOL_FCF,
+				
+				(select count(COD_CLASE_DOCUMENTO) from TM_CONTROL_DOC 
+				where COD_SERVICIO= #cod_servicio# and COD_CLASE_DOCUMENTO = '04' and COD_TIPO_MONEDA = '1' 
+				<isNotNull prepend="AND" property="ind_ingreso_salida"> IND_INGRESO_SALIDA = #ind_ingreso_salida#</isNotNull>
+				) AS CANTSOL_FNF,
+				(select  sum (convert (decimal(12,0), IMP_IMPORTE)) from TM_CONTROL_DOC 
+				where COD_SERVICIO= #cod_servicio# and COD_CLASE_DOCUMENTO = '04' and COD_TIPO_MONEDA = '1' 
+				<isNotNull prepend="AND" property="ind_ingreso_salida"> IND_INGRESO_SALIDA = #ind_ingreso_salida#</isNotNull>
+				) AS SUMSOL_FNF,
+				(select count(COD_CLASE_DOCUMENTO) from TM_CONTROL_DOC 
+				where COD_SERVICIO= #cod_servicio# and COD_CLASE_DOCUMENTO = '04' and COD_TIPO_MONEDA = '2' 
+				<isNotNull prepend="AND" property="ind_ingreso_salida"> IND_INGRESO_SALIDA = #ind_ingreso_salida#</isNotNull>
+				) AS CANTDOL_FNF,
+				(select  sum (convert (decimal(12,0), IMP_IMPORTE)) from TM_CONTROL_DOC 
+				where COD_SERVICIO= #cod_servicio# and COD_CLASE_DOCUMENTO = '04' and COD_TIPO_MONEDA = '2' 
+				<isNotNull prepend="AND" property="ind_ingreso_salida"> IND_INGRESO_SALIDA = #ind_ingreso_salida#</isNotNull>
+				) AS SUMDOL_FNF,
+				
+				(select count(COD_CLASE_DOCUMENTO) from TM_CONTROL_DOC 
+				where COD_SERVICIO= #cod_servicio# and COD_CLASE_DOCUMENTO = '14' and COD_TIPO_MONEDA = '1' 
+				<isNotNull prepend="AND" property="ind_ingreso_salida"> IND_INGRESO_SALIDA = #ind_ingreso_salida#</isNotNull>
+				) AS CANTSOL_FNE,
+				(select  sum (convert (decimal(12,0), IMP_IMPORTE)) from TM_CONTROL_DOC 
+				where COD_SERVICIO= #cod_servicio# and COD_CLASE_DOCUMENTO = '14' and COD_TIPO_MONEDA = '1' 
+				<isNotNull prepend="AND" property="ind_ingreso_salida"> IND_INGRESO_SALIDA = #ind_ingreso_salida#</isNotNull>
+				) AS SUMSOL_FNE,
+				(select count(COD_CLASE_DOCUMENTO) from TM_CONTROL_DOC 
+				where COD_SERVICIO= #cod_servicio# and COD_CLASE_DOCUMENTO = '14' and COD_TIPO_MONEDA = '2' 
+				<isNotNull prepend="AND" property="ind_ingreso_salida"> IND_INGRESO_SALIDA = #ind_ingreso_salida#</isNotNull>
+				) AS CANTDOL_FNE,
+				(select  sum (convert (decimal(12,0), IMP_IMPORTE)) from TM_CONTROL_DOC 
+				where COD_SERVICIO= #cod_servicio# and COD_CLASE_DOCUMENTO = '14' and COD_TIPO_MONEDA = '2' 
+				<isNotNull prepend="AND" property="ind_ingreso_salida"> IND_INGRESO_SALIDA = #ind_ingreso_salida#</isNotNull>
+				) AS SUMDOL_FNE
+		FROM TM_CONTROL_DOC
+		WHERE COD_SERVICIO = #cod_servicio#
+	</select>
+	
+	<select id="listConsEspecificaMap" parameterClass="java.util.Map" resultClass="java.util.HashMap">
+		SELECT 	cod_operador as cod_operador,
+				num_cuenta as num_cuenta,
+				COD_SERVICIO as cod_servicio,
+				cod_juliano as cod_juliano, 
+				FEC_VENCIMIENTO as fec_vencimiento,
+				IMP_IMPORTE as imp_importe, 
+				COD_CLASE_DOCUMENTO as cod_clase_documento,
+				COD_AGENCIA as cod_agencia,
+				cod_plaza as cod_plaza,
+				num_cliente as num_cliente,
+				CASE WHEN FEC_GIRO IS NULL THEN '' ELSE FEC_GIRO END as fec_giro,
+				FEC_DESEMBOLSO as fec_desembolso, 
+				CASE WHEN FEC_PROCESO IS NULL THEN '' ELSE FEC_PROCESO END as fec_proceso,
+				DES_NOMBRE as des_nombre, 
+				des_direccion as des_direccion,
+				num_cuenta_aceptante as num_cuenta_aceptante,
+				num_tasa_opcional as num_tasa_opcional,
+				num_porcentaje_renova as num_porcentaje_renova,
+				CASE WHEN ind_instruccion_cobro IS NULL THEN '' ELSE ind_instruccion_cobro END as ind_instruccion_cobro,
+				ind_exoneracion_impuest as ind_exoneracion_impuest,
+				num_tasa_garantia as num_tasa_garantia,
+				CASE WHEN COD_PLANILLA IS NULL THEN '' ELSE COD_PLANILLA END as cod_planilla,
+				num_cuenta_factoring as num_cuenta_factoring,
+				cod_tipo_doc_identidad as cod_tipo_doc_identidad,
+				num_doc_identidad as num_doc_identidad,
+				imp_prestamo_vinculado as imp_prestamo_vinculado,
+				IND_INGRESO_SALIDA as ind_ingreso_salida, 
+				CASE WHEN DES_OBSERVACION_UBICA IS NULL THEN '' ELSE DES_OBSERVACION_UBICA END as des_observacion_ubica,
+				COD_TIPO_MONEDA AS cod_tipo_moneda,
+				CASE WHEN NUM_LETRA IS NULL THEN '' ELSE NUM_LETRA END as num_letra,
+				COD_TIPO_MOVIMIENTO AS cod_tipo_movimiento,
+				CASE WHEN FEC_NUEVO_VENCIMIENTO IS NULL THEN '' ELSE FEC_NUEVO_VENCIMIENTO END as fec_nuevo_vencimiento,
+				CASE WHEN IMP_NUEVO_IMPORTE IS NULL THEN '' ELSE IMP_NUEVO_IMPORTE END as imp_nuevo_importe
+		FROM	tm_control_doc
+		WHERE 	1 = 1
+		<isNotNull prepend="AND" property="operador"> cod_operador = #operador#</isNotNull>
+		<isNotNull prepend="AND" property="consFecProc"> fec_proceso BETWEEN #fecProcIni# AND #fecProcFin#</isNotNull>
+		<isNotNull prepend="AND" property="agencia"> cod_agencia = #agencia#</isNotNull>
+		<isNotNull prepend="AND" property="consJuli"> cod_juliano BETWEEN #juliIni# AND #juliFin#</isNotNull>
+		<isNotNull prepend="AND" property="claseDoc"> cod_clase_documento = #claseDoc#</isNotNull>
+		<isNotNull prepend="AND" property="tipoMoneda"> cod_tipo_moneda = #tipoMoneda#</isNotNull>
+		<isNotNull prepend="AND" property="juliano"> cod_juliano = #juliano#</isNotNull>
+		<isNotNull prepend="AND" property="tipoMov"> cod_tipo_movimiento = #tipoMov#</isNotNull>
+		<isNotNull prepend="AND" property="estadoActSi"> ind_ingreso_salida in <![CDATA[('1','2')]]></isNotNull>
+		<isNotNull prepend="AND" property="estadoActNo"> ind_ingreso_salida = <![CDATA[('0')]]></isNotNull>
+		<isNotNull prepend="AND" property="planilla"> cod_planilla = #planilla#</isNotNull>
+		<isNotNull prepend="AND" property="plaza"> cod_plaza = #plaza#</isNotNull>
+		<isNotNull prepend="AND" property="tipoDocumento"> cod_clase_documento = #tipoDocumento#</isNotNull>
+		<isNotNull prepend="AND" property="ind_ingreso_salida"> ind_ingreso_salida = #ind_ingreso_salida#</isNotNull>
+		<isNotNull prepend="AND" property="cartera"> num_cuenta = #cartera#</isNotNull>
+		<isNotNull prepend="AND" property="servicio"> cod_servicio = #servicio#</isNotNull>
+		<isNotNull prepend="AND" property="insCobro"> ind_instruccion_cobro = #insCobro#</isNotNull>
+		<isNotNull prepend="AND" property="anhioVenc"> fec_vencimiento between #anhioVencIni# and #anhioVencFin#</isNotNull>
+	</select>
+	
+	<select id="obtenerImportes" parameterClass="java.util.Map" resultClass="java.util.HashMap">
+		SELECT DISTINCT COD_OPERADOR  AS COD_OPERADOR,
+			(select  sum ( convert (decimal(12,0), IMP_IMPORTE)) from TM_CONTROL_DOC where COD_TIPO_MONEDA = '1' 
+				<isNotNull prepend="AND" property="operador"> cod_operador = #operador#</isNotNull>
+				<isNotNull prepend="AND" property="estadoActSi"> ind_ingreso_salida in <![CDATA[('1','2')]]></isNotNull>
+				<isNotNull prepend="AND" property="estadoActNo"> ind_ingreso_salida = <![CDATA[('0')]]></isNotNull>
+				<isNotNull prepend="AND" property="planilla"> cod_planilla = #planilla#</isNotNull>
+				<isNotNull prepend="AND" property="plaza"> cod_plaza = #plaza#</isNotNull>
+				<isNotNull prepend="AND" property="cartera"> num_cuenta = #cartera#</isNotNull>
+				<isNotNull prepend="AND" property="servicio"> cod_servicio = #servicio#</isNotNull>
+				<isNotNull prepend="AND" property="tipoMov"> cod_tipo_movimiento = #tipoMov#</isNotNull>
+				<isNotNull prepend="AND" property="agencia"> cod_agencia = #agencia#</isNotNull>
+				<isNotNull prepend="AND" property="insCobro"> ind_instruccion_cobro = #insCobro#</isNotNull>
+				<isNotNull prepend="AND" property="anhioVenc"> fec_vencimiento between #anhioVencIni# and #anhioVencFin#</isNotNull>
+				<isNotNull prepend="AND" property="tipoDocumento"> cod_clase_documento = #tipoDocumento#</isNotNull>
+				<isNotNull prepend="AND" property="ind_ingreso_salida"> ind_ingreso_salida = #ind_ingreso_salida#</isNotNull>
+				<isNotNull prepend="AND" property="consFecProc"> fec_proceso BETWEEN #fecProcIni# AND #fecProcFin#</isNotNull>
+				<isNotNull prepend="AND" property="consJuli"> cod_juliano = #juliIni#</isNotNull>
+				<isNotNull prepend="AND" property="consLetra"> num_letra BETWEEN #letraIni# AND #letraFin#</isNotNull>
+			) AS soles,
+			(select  sum ( convert (decimal(12,0), IMP_IMPORTE)) from TM_CONTROL_DOC where COD_TIPO_MONEDA = '2' 
+				<isNotNull prepend="AND" property="operador"> cod_operador = #operador#</isNotNull>
+				<isNotNull prepend="AND" property="estadoActSi"> ind_ingreso_salida in <![CDATA[('1','2')]]></isNotNull>
+				<isNotNull prepend="AND" property="estadoActNo"> ind_ingreso_salida = <![CDATA[('0')]]></isNotNull>
+				<isNotNull prepend="AND" property="planilla"> cod_planilla = #planilla#</isNotNull>
+				<isNotNull prepend="AND" property="plaza"> cod_plaza = #plaza#</isNotNull>
+				<isNotNull prepend="AND" property="cartera"> num_cuenta = #cartera#</isNotNull>
+				<isNotNull prepend="AND" property="servicio"> cod_servicio = #servicio#</isNotNull>
+				<isNotNull prepend="AND" property="tipoMov"> cod_tipo_movimiento = #tipoMov#</isNotNull>
+				<isNotNull prepend="AND" property="agencia"> cod_agencia = #agencia#</isNotNull>
+				<isNotNull prepend="AND" property="insCobro"> ind_instruccion_cobro = #insCobro#</isNotNull>
+				<isNotNull prepend="AND" property="anhioVenc"> fec_vencimiento between #anhioVencIni# and #anhioVencFin#</isNotNull>
+				<isNotNull prepend="AND" property="tipoDocumento"> cod_clase_documento = #tipoDocumento#</isNotNull>
+				<isNotNull prepend="AND" property="ind_ingreso_salida"> ind_ingreso_salida = #ind_ingreso_salida#</isNotNull>
+				<isNotNull prepend="AND" property="consFecProc"> fec_proceso BETWEEN #fecProcIni# AND #fecProcFin#</isNotNull>
+				<isNotNull prepend="AND" property="consJuli"> cod_juliano = #juliIni#</isNotNull>
+				<isNotNull prepend="AND" property="consLetra"> num_letra BETWEEN #letraIni# AND #letraFin#</isNotNull>
+			) AS dolares,
+			(select  sum ( convert (decimal(12,0), IMP_IMPORTE)) from TM_CONTROL_DOC where 1=1 
+				<isNotNull prepend="AND" property="operador"> cod_operador = #operador#</isNotNull>
+				<isNotNull prepend="AND" property="estadoActSi"> ind_ingreso_salida in <![CDATA[('1','2')]]></isNotNull>
+				<isNotNull prepend="AND" property="estadoActNo"> ind_ingreso_salida = <![CDATA[('0')]]></isNotNull>
+				<isNotNull prepend="AND" property="planilla"> cod_planilla = #planilla#</isNotNull>
+				<isNotNull prepend="AND" property="plaza"> cod_plaza = #plaza#</isNotNull>
+				<isNotNull prepend="AND" property="cartera"> num_cuenta = #cartera#</isNotNull>
+				<isNotNull prepend="AND" property="servicio"> cod_servicio = #servicio#</isNotNull>
+				<isNotNull prepend="AND" property="tipoMov"> cod_tipo_movimiento = #tipoMov#</isNotNull>
+				<isNotNull prepend="AND" property="agencia"> cod_agencia = #agencia#</isNotNull>
+				<isNotNull prepend="AND" property="insCobro"> ind_instruccion_cobro = #insCobro#</isNotNull>
+				<isNotNull prepend="AND" property="anhioVenc"> fec_vencimiento between #anhioVencIni# and #anhioVencFin#</isNotNull>
+				<isNotNull prepend="AND" property="tipoDocumento"> cod_clase_documento = #tipoDocumento#</isNotNull>
+				<isNotNull prepend="AND" property="ind_ingreso_salida"> ind_ingreso_salida = #ind_ingreso_salida#</isNotNull>
+				<isNotNull prepend="AND" property="consFecProc"> fec_proceso BETWEEN #fecProcIni# AND #fecProcFin#</isNotNull>
+				<isNotNull prepend="AND" property="consJuli"> cod_juliano = #juliIni#</isNotNull>
+				<isNotNull prepend="AND" property="consLetra"> num_letra BETWEEN #letraIni# AND #letraFin#</isNotNull>
+			) AS totalMonto
+		FROM TM_CONTROL_DOC
+		WHERE 1 = 1
+		<isNotNull prepend="AND" property="operador"> cod_operador = #operador#</isNotNull>
+		<isNotNull prepend="AND" property="estadoActSi"> ind_ingreso_salida in <![CDATA[('1','2')]]></isNotNull>
+		<isNotNull prepend="AND" property="estadoActNo"> ind_ingreso_salida = <![CDATA[('0')]]></isNotNull>
+		<isNotNull prepend="AND" property="planilla"> cod_planilla = #planilla#</isNotNull>
+		<isNotNull prepend="AND" property="plaza"> cod_plaza = #plaza#</isNotNull>
+		<isNotNull prepend="AND" property="cartera"> num_cuenta = #cartera#</isNotNull>
+		<isNotNull prepend="AND" property="servicio"> cod_servicio = #servicio#</isNotNull>
+		<isNotNull prepend="AND" property="tipoMov"> cod_tipo_movimiento = #tipoMov#</isNotNull>
+		<isNotNull prepend="AND" property="agencia"> cod_agencia = #agencia#</isNotNull>
+		<isNotNull prepend="AND" property="insCobro"> ind_instruccion_cobro = #insCobro#</isNotNull>
+		<isNotNull prepend="AND" property="anhioVenc"> fec_vencimiento between #anhioVencIni# and #anhioVencFin#</isNotNull>
+		<isNotNull prepend="AND" property="tipoDocumento"> cod_clase_documento = #tipoDocumento#</isNotNull>
+		<isNotNull prepend="AND" property="ind_ingreso_salida"> ind_ingreso_salida = #ind_ingreso_salida#</isNotNull>
+		<isNotNull prepend="AND" property="consFecProc"> fec_proceso BETWEEN #fecProcIni# AND #fecProcFin#</isNotNull>
+		<isNotNull prepend="AND" property="consJuli"> cod_juliano = #juliIni#</isNotNull>
+		<isNotNull prepend="AND" property="consLetra"> num_letra BETWEEN #letraIni# AND #letraFin#</isNotNull>
+	</select>
+	
+	<select id="obtenerTotalRegistros" resultClass="java.util.HashMap" parameterClass="java.util.Map">
+		SELECT COUNT(*) as totalRegistros
+		FROM TM_CONTROL_DOC
+		WHERE 1 = 1
+		<isNotNull prepend="AND" property="operador"> cod_operador = #operador#</isNotNull>
+	</select>
+	
+	<update id="actualizarRenov" parameterClass="controlDocBean">
+		UPDATE TM_CONTROL_DOC
+			SET ind_ingreso_salida = #ind_ingreso_salida#,
+				des_observacion_ubica = #des_observacion_ubica#,
+				num_letra = #num_letra#,
+				cod_tipo_movimiento = #cod_tipo_movimiento#,
+				fec_nuevo_vencimiento = #fec_nuevo_vencimiento#,
+				fec_movimiento = #fec_movimiento#,
+				imp_nuevo_importe = #imp_nuevo_importe#
+		WHERE 
+			cod_juliano = #cod_juliano#
+			AND fec_nuevo_vencimiento = #fec_nuevo_vencimiento#
+	</update>
+	
+	<select id="obtenerImpXIndXMoneda" resultClass="java.util.HashMap" parameterClass="java.util.Map">
+		SELECT	COUNT(cod_juliano) as cantidad,
+				SUM (CONVERT(decimal(12,0), IMP_IMPORTE) ) as imp_importe 
+		FROM	TM_CONTROL_DOC
+		WHERE 1 = 1
+		<isNotNull prepend="AND" property="ind_ingreso_salida"> ind_ingreso_salida = #ind_ingreso_salida#</isNotNull>
+		<isNotNull prepend="AND" property="cod_tipo_moneda"> cod_tipo_moneda = #cod_tipo_moneda#</isNotNull>
+	</select>
+	
+</sqlMap>

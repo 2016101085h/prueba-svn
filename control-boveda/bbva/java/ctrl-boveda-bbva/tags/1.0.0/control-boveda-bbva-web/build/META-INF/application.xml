@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application xmlns="http://java.sun.com/xml/ns/javaee" 
+	xmlns:application="http://java.sun.com/xml/ns/javaee/application_5.xsd" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="5">
+	
+	<display-name>Sistema de Control de Boveda BBVA</display-name>
+	<description>Sistema de Control de Boveda BBVA</description>
+	
+	<application-name>Plugins</application-name>
+    <initialize-in-order>true</initialize-in-order>
+			
+	<module>
+		<web>
+			<web-uri>ctrlboveda.war</web-uri>
+			<context-root>/ctrl-boveda-bbva</context-root>
+		</web>
+	</module>
+	
+<!-- 	<module> -->
+<!-- 		<java>lib/control-model-ifz.jar</java> -->
+<!-- 	</module> -->
+<!-- 	<module> -->
+<!-- 		<java>lib/control-model-imp.jar</java> -->
+<!-- 	</module> -->
+<!-- 	<module> -->
+<!-- 		<java>lib/control-service-ifz.jar</java> -->
+<!-- 	</module> -->
+<!-- 	<module> -->
+<!-- 		<java>lib/control-service-imp.jar</java> -->
+<!-- 	</module> -->
+	
+</application>

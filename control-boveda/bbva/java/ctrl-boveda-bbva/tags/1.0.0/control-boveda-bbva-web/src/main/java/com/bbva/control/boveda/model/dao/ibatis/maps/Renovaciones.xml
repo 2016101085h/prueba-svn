@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="renovaciones">
+
+	<typeAlias alias="documentoBean" type="com.bbva.control.boveda.bean.DocRenovadoBean" />
+	
+	<resultMap id="resultDocumento" class="com.bbva.control.boveda.bean.DocumentoBean">
+		<result property="id_devolucion" column="id_devolucion"/>
+		<result property="id_documento" column="id_documento"/>
+		<result property="fecha_vencimiento" column="fecha_vencimiento"/>
+	</resultMap>
+	
+	<select id="listaRenovados" parameterClass="java.util.Map" resultMap="resultDocumento">
+		SELECT  ID_DEVOLUCION as id_devolucion, 
+				ID_DOCUMENTO as id_documento, 
+				fecha_vencimiento as fecha_vencimiento
+		FROM 	Renovaciones.dbo.TM_DOCUMENTO
+		WHERE 	1 = 1
+		<isNotNull prepend="AND" property="cod_juliano"> id_documento = #cod_juliano#</isNotNull>
+		<isNotNull prepend="AND" property="nuevo_vencimiento"> fecha_vencimiento = #nuevo_vencimiento#</isNotNull>
+<!-- 		dr.COD_JULIANO COLLATE Modern_Spanish_CI_AS  = doc.ID_DOCUMENTO COLLATE Modern_Spanish_CI_AS -->
+<!-- 		AND 	doc.FECHA_VENCIMIENTO COLLATE Modern_Spanish_CI_AS = dr.FEC_NUEVO_VENCIMIENTO COLLATE Modern_Spanish_CI_AS -->
+		ORDER BY FECHA_VENCIMIENTO desc
+	</select>
+
+</sqlMap>

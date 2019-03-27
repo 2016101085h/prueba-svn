@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="parametros">
+
+	<select id="listaAgencias" resultClass="java.util.HashMap">
+		SELECT 	ID_AGENCIA as codAgencia, 
+				AGENCIA as desAgencia
+		FROM	CarteraBBVA.dbo.TA_AGENCIA
+	</select>
+	
+	<select id="obtenerAgencia" parameterClass="java.util.Map" resultClass="java.util.HashMap">
+		SELECT 	ID_AGENCIA as codAgencia, 
+				AGENCIA as desAgencia
+		FROM	CarteraBBVA.dbo.TA_AGENCIA
+		WHERE 1 = 1
+		<isNotNull prepend="AND" property="id_oficina_movimiento"> ID_AGENCIA = #id_oficina_movimiento#</isNotNull>
+	</select>
+	
+	
+</sqlMap>
