@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="letra">
+
+	<typeAlias alias="letraBean" type="com.bbva.control.boveda.bean.LetraBean" />
+
+	<resultMap id="listaLetras" class="letraBean">
+		<result property="id_letra" column="id_letra" />
+		<result property="fecha_movimiento" column="fecha_movimiento" />
+		<result property="fecha_vencimiento" column="fecha_vencimiento" />
+		<result property="id_plaza_cobro" column="id_plaza_cobro" />
+		<result property="id_tipo_movimiento" column="id_tipo_movimiento" />
+		<result property="importe" column="importe" />
+		<result property="numero_banco" column="numero_banco" />
+		<result property="nombre_aceptante" column="nombre_aceptante" />
+		<result property="id_forma_pago" column="id_forma_pago" />
+		<result property="cod_cartera" column="cod_cartera" />
+		<result property="id_plaza_actual" column="id_plaza_actual" />
+		<result property="id_oficina_movimiento" column="id_oficina_movimiento" />
+		<result property="id_tipo_documento" column="id_tipo_documento" />
+		<result property="fecha_cargado" column="fecha_cargado" />
+		<result property="nuevo_vencimiento" column="nuevo_vencimiento" />
+		<result property="nuevo_importe" column="nuevo_importe" />
+		<result property="direccion1" column="direccion1" />
+		<result property="direccion2" column="direccion2" />
+		<result property="cuenta_corriente" column="cuenta_corriente" />
+		<result property="nombre_titular" column="nombre_titular" />
+		<result property="direccion1_titular" column="direccion1_titular" />
+		<result property="direccion2_titular" column="direccion2_titular" />
+		<result property="id_usuario" column="id_usuario" />
+		<result property="sta_buzon" column="sta_buzon" />
+	</resultMap>
+	
+	<select id="obtenerLetras" resultMap="listaLetras" parameterClass="java.util.Map">
+		SELECT 	id_letra, fecha_movimiento, fecha_vencimiento, id_plaza_cobro,
+				id_tipo_movimiento, importe, numero_banco, nombre_aceptante,
+				id_forma_pago, cod_cartera, id_plaza_actual, id_oficina_movimiento,
+				id_tipo_documento, fecha_cargado, nuevo_vencimiento, nuevo_importe,
+				direccion1, direccion2, cuenta_corriente, nombre_titular, direccion1_titular,
+				direccion2_titular, id_usuario, sta_buzon
+		FROM 	TM_LETRA
+		WHERE 1 = 1
+		<isNotNull prepend="AND" property="fecha_cargado"> fecha_cargado = #fecha_cargado#</isNotNull>
+	</select>
+</sqlMap>

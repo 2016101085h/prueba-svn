@@ -1,0 +1,195 @@
+<project name="control-boveda-bbva-sharedlib" default="ear-gen" basedir=".">
+  <property file="ant-proy-config.properties"/>	
+	
+  <tstamp>
+  	<format property="TODAY" pattern="dd-MM-yyyy"/>
+    <format property="touch.time" pattern="yyyyMMddhhmm"/> 	
+  </tstamp>
+	
+  <target name="create">
+  	<mkdir dir="${build.dir}/lib" />
+    <mkdir dir="${build.dir}/templib"/>
+  </target>
+
+  <target name="control-model-ifz-gen">
+    <tstamp>
+      <format property="TODAY" pattern="dd-MM-yyyy" />
+    </tstamp>
+    <jar jarfile="${project.lib}/control-model-ifz.jar" basedir="${build.dir}/templib">
+      <fileset dir="${classes.dir}">      	
+      	<include name="com/bbva/control/boveda/model/*.class"/>
+      	<include name="com/bbva/control/boveda/model/dao/*DAO.class"/>
+      	<include name="com/bbva/control/boveda/bean/*.class"/>
+      </fileset>
+      <manifest>
+        <section name="common">
+          <attribute name="Specification-Title" value="control-model-ifz"/>
+          <attribute name="Specification-Version" value="${spec.version}"/>
+          <attribute name="Specification-Vendor" value="BBVA CONTINENTAL"/>
+          <attribute name="Implementation-Title" value="control-model-ifz"/>
+          <attribute name="Implementation-Version" value="${impl.version}"/>
+          <attribute name="Implementation-Vendor" value="BBVA CONTINENTAL"/>
+        </section>
+      </manifest>
+    </jar>
+  </target>
+	
+  <target name="control-model-imp-gen">
+    <tstamp>
+      <format property="TODAY" pattern="dd-MM-yyyy" />
+    </tstamp>
+    <jar jarfile="${project.lib}/control-model-imp.jar" basedir="${build.dir}/templib">
+      <fileset dir="${classes.dir}">
+      	<include name="com/bbva/control/boveda/model/dao/ibatis/SqlMap*.class"/>
+      	<include name="com/bbva/control/boveda/model/dao/ibatis/maps/*.xml"/>
+      	<include name="ctrl-bbva-shalib-sqlmap-config.xml"/>
+      	<include name="ctrl-boveda-shalib-data.xml"/>
+      		
+      </fileset>
+      <manifest>
+        <attribute name="Built-By" value="${user.name}"/>
+        <section name="common">
+          <attribute name="Specification-Title" value="control-model-imp"/>
+          <attribute name="Specification-Version" value="${spec.version}"/>
+          <attribute name="Specification-Vendor" value="BBVA CONTINENTAL"/>
+          <attribute name="Implementation-Title" value="control-model-imp"/>
+          <attribute name="Implementation-Version" value="${impl.version}"/>
+          <attribute name="Implementation-Vendor" value="BBVA CONTINENTAL"/>
+        </section>
+      </manifest>
+    </jar>
+  </target>
+
+  <!-- Generador de la libreria -->
+  <target name="control-service-ifz-gen">
+  	
+    <tstamp>
+      <format property="TODAY" pattern="dd-MM-yyyy" />
+    </tstamp>
+    <jar jarfile="${project.lib}/control-service-ifz.jar" basedir="${build.dir}/templib">
+      <fileset dir="${classes.dir}">
+        <!-- indique las clases que necesita para generar el jar -->
+      	<include name="com/bbva/control/boveda/service/*Service.class"/>
+      	<include name="com/bbva/control/boveda/util/*.class" />
+      </fileset>
+      <manifest>
+        <attribute name="Built-By" value="${user.name}"/>
+        <section name="common">
+          <attribute name="Specification-Title" value="control-service-ifz"/>
+          <attribute name="Specification-Version" value="${spec.version}"/>
+          <attribute name="Specification-Vendor" value="BBVA CONTINENTAL"/>
+          <attribute name="Implementation-Title" value="control-service-ifz"/>
+          <attribute name="Implementation-Version" value="${impl.version}"/>
+          <attribute name="Implementation-Vendor" value="BBVA CONTINENTAL"/>
+        </section>
+      </manifest>
+    </jar>
+  </target>
+
+  <target name="control-service-imp-gen">
+    <tstamp>
+      <format property="TODAY" pattern="dd-MM-yyyy" />
+    </tstamp>
+    <jar jarfile="${project.lib}/control-service-imp.jar" basedir="${build.dir}/templib">
+      <fileset dir="${classes.dir}">
+      	<include name="com/bbva/control/boveda/service/*ServiceImpl.class" />
+      	
+      </fileset>
+      <fileset dir="${classes.dir}">
+        <!-- Archivos de configuración de Spring -->
+        <include name="ctrl-boveda-shalib-service.xml" />
+      	<include name="ctrl-boveda-shalib-service-map.xml" />
+      	<include name="ctrl-boveda-shalib-tx.xml"/>
+      </fileset>
+      <manifest>
+        <attribute name="Built-By" value="${user.name}"/>
+        <section name="common">
+          <attribute name="Specification-Title" value="control-service-imp"/>
+          <attribute name="Specification-Version" value="${spec.version}"/>
+          <attribute name="Specification-Vendor" value="BBVA CONTINENTAL"/>
+          <attribute name="Implementation-Title" value="control-service-imp"/>
+          <attribute name="Implementation-Version" value="${impl.version}"/>
+          <attribute name="Implementation-Vendor" value="BBVA CONTINENTAL"/>
+        </section>
+        <!-- indique las librerias que necesita la aplicacion para funcionar -->
+      </manifest>
+    </jar>
+  </target>
+	
+	<!-- PATH GEN -->
+	<path id="build.classpath">
+	  <fileset dir="${build.dir}">
+	     <include name="lib/*.jar"/>
+	  </fileset>
+	</path>
+
+	<pathconvert property="manifest.classpath" pathsep=" ">
+	  <path refid="build.classpath"/>
+	  <mapper>
+	    <chainedmapper>
+	       <flattenmapper/>
+	       <globmapper from="*.jar" to="lib/*.jar"/>
+	    </chainedmapper>
+	  </mapper>
+	</pathconvert>
+
+	<!-- EAR GEN -->
+  <target name="ear-gen" depends="create, control-model-ifz-gen, control-model-imp-gen, control-service-ifz-gen, control-service-imp-gen">
+  	
+    <!-- indique las librerias que utiliza la aplicacion -->
+    <jar jarfile="${build.dir}/control-boveda-bbva-sharedlib.ear" basedir="${build.dir}">
+      <include name="META-INF/*.xml" />
+      <include name="lib/control-model-ifz.jar" />
+      <include name="lib/control-model-imp.jar" />
+      <include name="lib/control-service-ifz.jar" />
+      <include name="lib/control-service-imp.jar" />
+    	<include name="lib/aopalliance-1.0.jar" />
+    	<include name="lib/aspectjrt.jar" />
+    	<include name="lib/commons-logging.jar" />
+    	<include name="lib/commons-io.jar" />
+    	<include name="lib/ibatis-sqlmap-2.3.0.jar" />
+    	<include name="lib/log4j.jar" />
+    	<include name="lib/spring-aop-3.2.3.RELEASE.jar" />
+    	<include name="lib/spring-beans-3.2.3.RELEASE.jar" />
+    	<include name="lib/spring-context-3.2.3.RELEASE.jar" />
+    	<include name="lib/spring-core-3.2.3.RELEASE.jar" />
+    	<include name="lib/spring-context-support-3.2.3.RELEASE.jar" />
+    	<include name="lib/spring-expression-3.2.3.RELEASE.jar" />
+    	<include name="lib/spring-jdbc-3.2.3.RELEASE.jar" />
+    	<include name="lib/spring-orm-3.2.3.RELEASE.jar" />
+    	<include name="lib/spring-tx-3.2.3.RELEASE.jar" />
+    	<include name="lib/spring-web-3.2.3.RELEASE.jar" />
+    	<include name="lib/spring-webmvc-3.2.3.RELEASE.jar" />
+    	<include name="lib/poi-3.7-20101029.jar" />
+    	<include name="lib/xmlbeans-2.5.0.jar" />
+    	<include name="lib/dom4j.jar" />
+    	<include name="lib/poi-ooxml-schemas-3.7-beta1.jar" />
+    	<include name="lib/xmlbeans-xmlpublic-2.4.0.jar" />
+    	<include name="lib/poi-3.9.jar" />
+    	<include name="lib/poi-ooxml-3.5-beta5.jar" />
+    	<include name="lib/poi-ooxml-3.9.jar" />
+    	
+      <manifest>
+        <attribute name="Built-By" value="${user.name}"/>
+      	<!--attribute name="Weblogic-Application-Version" value="${impl.version}"/-->
+        <attribute name="Specification-Title" value="control-boveda-bbva-sharedlib"/>
+      	<attribute name="Specification-Vendor" value="BBVA CONTINENTAL" />
+      	<attribute name="Implementation-Title" value="control-boveda-bbva-sharedlib" />
+      	<attribute name="Implementation-Vendor" value="BBVA CONTINENTAL" />
+        <attribute name="Specification-Version" value="${spec.version}"/>
+        <attribute name="Implementation-Version" value="${impl.version}"/>
+        <attribute name="Extension-Name" value="control-boveda-bbva-sharedlib"/>
+      	<attribute name="Class-Path" value="${manifest.classpath}"/>
+      </manifest>
+    </jar>
+  	 	<copy file="${build.dir}/control-boveda-bbva-sharedlib.ear" todir="${wls103.deploy.dir}" /> 
+  		<!--copy file="${build.dir}/control-boveda-bbva-sharedlib.ear" todir="${autodeploy.dir}" /--> 
+  	
+  	<delete file="${build.dir}/lib/control-model-ifz.jar"></delete>
+  	<delete file="${build.dir}/lib/control-model-imp.jar"></delete>
+  	<delete file="${build.dir}/lib/control-service-ifz.jar"></delete>
+  	<delete file="${build.dir}/lib/control-service-imp.jar"></delete>
+  	
+  </target>
+	
+</project>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="docDevuelto">
+
+	<typeAlias alias="docDevueltoBean" type="com.bbva.control.boveda.bean.DocDevueltoBean" />
+	
+	<insert id="insertar" parameterClass="com.bbva.control.boveda.bean.DocDevueltoBean">
+		insert into TM_DOC_DEVUELTO (
+
+		<isNotEmpty property="num_letra">num_letra</isNotEmpty>
+		<isNotEmpty property="cod_juliano" prepend=",">cod_juliano</isNotEmpty>
+		<isNotEmpty property="fec_vencimiento" prepend=",">fec_vencimiento</isNotEmpty>
+		<isNotEmpty property="imp_importe" prepend=",">imp_importe</isNotEmpty>
+		<isNotEmpty property="fec_movimiento" prepend=",">fec_movimiento</isNotEmpty>
+		<isNotEmpty property="cod_tipo_movimiento" prepend=",">cod_tipo_movimiento</isNotEmpty>
+		<isNotEmpty property="cod_oficina_movimiento" prepend=",">cod_oficina_movimiento</isNotEmpty>
+		<isNotEmpty property="cod_tipo_documento" prepend=",">cod_tipo_documento</isNotEmpty>
+		<isNotEmpty property="cod_forma_pago" prepend=",">cod_forma_pago</isNotEmpty>
+		<isNotEmpty property="fec_nuevo_vencimiento" prepend=",">fec_nuevo_vencimiento</isNotEmpty>
+		<isNotEmpty property="imp_nuevo_importe" prepend=",">imp_nuevo_importe</isNotEmpty>
+		<isNotEmpty property="fec_cargado" prepend=",">fec_cargado</isNotEmpty>
+		
+		) values (
+
+		<isNotEmpty property="num_letra">#num_letra#</isNotEmpty>
+		<isNotEmpty property="cod_juliano" prepend=",">#cod_juliano#</isNotEmpty>
+		<isNotEmpty property="fec_vencimiento" prepend=",">#fec_vencimiento#</isNotEmpty>
+		<isNotEmpty property="imp_importe" prepend=",">#imp_importe#</isNotEmpty>
+		<isNotEmpty property="fec_movimiento" prepend=",">#fec_movimiento#</isNotEmpty>
+		<isNotEmpty property="cod_tipo_movimiento" prepend=",">#cod_tipo_movimiento#</isNotEmpty>
+		<isNotEmpty property="cod_oficina_movimiento" prepend=",">#cod_oficina_movimiento#</isNotEmpty>
+		<isNotEmpty property="cod_tipo_documento" prepend=",">#cod_tipo_documento#</isNotEmpty>
+		<isNotEmpty property="cod_forma_pago" prepend=",">#cod_forma_pago#</isNotEmpty>
+		<isNotEmpty property="fec_nuevo_vencimiento" prepend=",">#fec_nuevo_vencimiento#</isNotEmpty>
+		<isNotEmpty property="imp_nuevo_importe" prepend=",">#imp_nuevo_importe#</isNotEmpty>
+		<isNotEmpty property="fec_cargado" prepend=",">#fec_cargado#</isNotEmpty>
+		
+		)
+	</insert>
+	
+	<resultMap id="listaBean" class="docDevueltoBean">
+			<result property="num_letra" column="num_letra" />
+			<result property="cod_juliano" column="cod_juliano" />
+			<result property="fec_vencimiento" column="fec_vencimiento" />
+			<result property="imp_importe" column="imp_importe" />
+			<result property="fec_movimiento" column="fec_movimiento" />
+			<result property="cod_tipo_movimiento" column="cod_tipo_movimiento" />
+			<result property="cod_oficina_movimiento" column="cod_oficina_movimiento" />
+			<result property="cod_tipo_documento" column="cod_tipo_documento" />
+			<result property="cod_forma_pago" column="cod_forma_pago" />
+			<result property="fec_nuevo_vencimiento" column="fec_nuevo_vencimiento" />
+			<result property="imp_nuevo_importe" column="imp_nuevo_importe" />
+			<result property="fec_cargado" column="fec_cargado" />
+	</resultMap>
+	
+	<select id="listDevueltos" parameterClass="java.util.Map" resultMap="listaBean">
+		SELECT 	num_letra, cod_juliano, fec_vencimiento, imp_importe, fec_movimiento,  
+				cod_tipo_movimiento, cod_oficina_movimiento, cod_tipo_documento, 
+				cod_forma_pago, fec_nuevo_vencimiento, imp_nuevo_importe, fec_cargado
+		FROM	TM_DOC_DEVUELTO
+		WHERE 1 = 1
+		<isNotNull prepend="AND" property="cod_juliano"> cod_juliano = #cod_juliano#</isNotNull>
+		<isNotNull prepend="AND" property="fec_nuevo_vencimiento"> fec_nuevo_vencimiento = #fec_nuevo_vencimiento#</isNotNull>
+	</select>
+	
+	<delete id="borrar" parameterClass="docDevueltoBean">
+		DELETE FROM  TM_DOC_DEVUELTO
+		WHERE	1=1
+		<isNotNull prepend="AND" property="num_letra"> num_letra = #num_letra#</isNotNull>
+		<isNotNull prepend="AND" property="cod_juliano"> cod_juliano = #cod_juliano#</isNotNull>
+		<isNotNull prepend="AND" property="fec_vencimiento"> fec_vencimiento = #fec_vencimiento#</isNotNull>
+	</delete>
+	
+</sqlMap>

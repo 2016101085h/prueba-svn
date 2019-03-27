@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="devoluciones">
+
+	<typeAlias alias="devolucionesBean" type="com.bbva.control.boveda.bean.DevolucionesBean" />
+	
+	<select id="obtenerDevoluciones" parameterClass="java.util.Map" resultClass="devolucionesBean">
+		SELECT 	numero_banco, fecha_vencimiento, estado, id_letra
+		FROM	TM_Devoluciones
+		WHERE 1 = 1
+		<isNotNull prepend="AND" property="cod_juliano"> numero_banco = #cod_juliano#</isNotNull>
+		<isNotNull prepend="AND" property="fec_vencimiento"> fecha_vencimiento = #fec_vencimiento#</isNotNull>
+		<isNotNull prepend="AND" property="id_letra"> id_letra = #id_letra#</isNotNull>
+	</select>
+	
+	<delete id="borrar" parameterClass="devolucionesBean">
+		DELETE FROM TM_Devoluciones
+		WHERE numero_banco = #numero_banco#
+		and fecha_vencimiento = #fecha_vencimiento#
+		and id_letra = #id_letra#
+	</delete>
+	
+</sqlMap>
